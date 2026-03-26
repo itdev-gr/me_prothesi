@@ -1,0 +1,37 @@
+---
+const items = [
+  { num: "01", label: "Θεματική σειρά boxes" },
+  { num: "02", label: "Corporate wellbeing toolkits" },
+  { num: "03", label: "Workshops" },
+];
+const inspirationImage = "/images/section-08-piges-empneysis.png";
+---
+<section class="section-08" id="makroprothesmo-orama" aria-labelledby="section-08-title">
+  <div class="container">
+    <h2 id="section-08-title" class="section-heading" style="margin-bottom: 3rem;">
+      <span class="section-number">08</span>
+      Μακροπρόθεσμο όραμα.
+    </h2>
+    <div class="section-08__split">
+      <div class="section-08__list">
+        {items.map((item) => (
+          <div class="section-08__row">
+            <span class="section-08__row-num">{item.num}</span>
+            <p class="section-08__row-label">{item.label}</p>
+          </div>
+        ))}
+      </div>
+      <figure class="section-08__figure">
+        <div class="section-08__frame">
+          <img
+            class="section-08__img"
+            src={inspirationImage}
+            loading="lazy"
+            decoding="async"
+            alt="Κάρτα «Πηγές έμπνευσης»: οι ασκήσεις εμπνέονται από mindfulness στην εργασία, attention training, CBT και coaching — Με Πρόθεση"
+          />
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,43 @@
+---
+const cards = [
+  "Πότε ήταν η τελευταία φορά που σταμάτησες για λίγο μέσα στην εργασία σου;",
+  "Αλήθεια τώρα... Πόσες από τις σημερινές σου κινήσεις έγιναν συνειδητά και πόσες από συνήθεια;",
+  "Η συνεχής δραστηριότητα δεν σημαίνει πάντα παρουσία.",
+];
+const cardImage = "/images/card-awakening-sample.png";
+---
+<section class="section-04" id="deigmata-karton" aria-labelledby="section-04-title">
+  <div class="container">
+    <header class="section-04__header">
+      <h2 id="section-04-title" class="section-04__title section-heading">
+        <span class="section-number">04</span>
+        Δείγματα από κάρτες αφύπνισης
+      </h2>
+    </header>
+
+    <div class="section-04__split">
+      <div class="section-04__quotes" role="list">
+        {cards.map((card) => (
+          <article class="section-04__card" role="listitem">
+            <p class="section-04__card-text">{card}</p>
+          </article>
+        ))}
+      </div>
+
+      <aside class="section-04__aside" aria-label="Εικονογράφηση κάρτας αφύπνισης">
+        <figure class="section-04__figure">
+          <div class="section-04__frame">
+            <img
+              class="section-04__img"
+              src={cardImage}
+              loading="lazy"
+              decoding="async"
+              alt="Κάρτα αφύπνισης με χειροποίητο πλαίσιο: «Πότε ήταν η τελευταία φορά που σταμάτησες για λίγο μέσα στην εργασία σου;» — Με Πρόθεση"
+            />
+          </div>
+          <figcaption class="section-04__caption">Η ίδια πρόταση στη φυσική κάρτα.</figcaption>
+        </figure>
+      </aside>
+    </div>
+  </div>
+</section>

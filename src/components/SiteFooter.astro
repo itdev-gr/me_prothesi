@@ -1,0 +1,17 @@
+---
+import { SITE } from "../constants/site.ts";
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <p class="site-footer__brand">{SITE.name}</p>
+    <p class="site-footer__note">Structured reflection · τελετουργική μορφή · καθημερινότητα</p>
+    <nav class="site-footer__nav" aria-label="Σύνδεσμοι">
+      <a href={SITE.instagramUrl} class="site-footer__link" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <span class="site-footer__sep" aria-hidden="true">·</span>
+      <a href="/pdfs/final-box-cards.pdf" class="site-footer__link" target="_blank" rel="noopener noreferrer">PDF κουτιού</a>
+      <span class="site-footer__sep" aria-hidden="true">·</span>
+      <a href="/pdfs/stickers-box-1.pdf" class="site-footer__link" target="_blank" rel="noopener noreferrer">PDF αυτοκόλλητων</a>
+    </nav>
+  </div>
+</footer>

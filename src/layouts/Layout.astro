@@ -1,0 +1,1279 @@
+---
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+
+interface Props {
+  title?: string;
+}
+const { title = "Με Πρόθεση" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="el">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Με Πρόθεση — structured reflection tools και θεματικά boxes για την καθημερινότητα." />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style is:global>
+      :root {
+        --bg: #f7f5f2;
+        --text: #2c2a27;
+        --accent: #8b1a1a;
+        --muted: #9a9590;
+        --border: #e3dfd6;
+        --card-bg: rgba(255, 255, 255, 0.55);
+        --header-h: 4.25rem;
+        --container: min(1080px, calc(100% - 2.5rem));
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: "Inter", system-ui, sans-serif;
+        font-weight: 300;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Playfair Display", Georgia, serif;
+        font-weight: 400;
+        line-height: 1.2;
+      }
+      .section-number {
+        font-family: "Inter", sans-serif;
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        color: var(--muted);
+        text-transform: uppercase;
+        margin-right: 0.75rem;
+        vertical-align: middle;
+      }
+      .section-heading {
+        font-size: clamp(2rem, 5vw, 3.25rem);
+        color: var(--text);
+        white-space: nowrap;
+        text-align: center;
+      }
+      @media (max-width: 640px) {
+        .section-heading {
+          white-space: normal;
+        }
+      }
+      .label-caps {
+        font-family: "Inter", sans-serif;
+        font-size: 0.65rem;
+        letter-spacing: 0.18em;
+        color: var(--muted);
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 1rem;
+      }
+      .accent-italic {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        color: var(--accent);
+      }
+      section {
+        padding: clamp(4rem, 10vw, 6rem) 0;
+        border-bottom: 1px solid var(--border);
+      }
+      section:last-of-type {
+        border-bottom: none;
+      }
+      .container {
+        width: var(--container);
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 1.25rem;
+      }
+      @media (min-width: 768px) {
+        .container {
+          padding: 0 2rem;
+        }
+      }
+      .pill-tag {
+        display: inline-block;
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        padding: 0.4rem 1rem;
+        font-size: 0.85rem;
+        color: var(--text);
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+      }
+      /* Header */
+      .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        height: var(--header-h);
+        display: flex;
+        align-items: center;
+        background: rgba(247, 245, 242, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+      }
+      .site-header__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 1.25rem;
+      }
+      @media (min-width: 768px) {
+        .site-header__inner {
+          padding: 0 2rem;
+        }
+      }
+      .site-logo {
+        font-family: "Playfair Display", serif;
+        font-size: 1.15rem;
+        font-weight: 500;
+        color: var(--accent);
+        text-decoration: none;
+        letter-spacing: 0.02em;
+      }
+      .site-logo:hover {
+        opacity: 0.85;
+      }
+      .site-nav-link {
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--muted);
+        text-decoration: none;
+      }
+      .site-nav-link:hover {
+        color: var(--text);
+      }
+      /* Main */
+      .page-main {
+        min-height: 100vh;
+      }
+      /* Hero — ξεχωριστή «σκηνή» από τα sections */
+      .site-hero {
+        position: relative;
+        text-align: center;
+        min-height: min(92vh, 52rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: calc(var(--header-h) + 2.5rem);
+        padding-bottom: clamp(3.5rem, 10vw, 6rem);
+        background: linear-gradient(
+          165deg,
+          #faf8f5 0%,
+          #f0ebe4 42%,
+          #e6e1d8 100%
+        );
+        border-bottom: 1px solid rgba(44, 42, 39, 0.07);
+        box-shadow: 0 20px 50px rgba(44, 42, 39, 0.07);
+      }
+      .site-hero::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        width: min(5.5rem, 18vw);
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        opacity: 0.35;
+        pointer-events: none;
+      }
+      .page-sections {
+        position: relative;
+        z-index: 1;
+        background-color: var(--bg);
+        box-shadow: 0 -1px 0 rgba(44, 42, 39, 0.04);
+      }
+      .site-hero__inner {
+        max-width: 36rem;
+        margin: 0 auto;
+      }
+      .site-hero__eyebrow {
+        font-size: 0.65rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 1.5rem;
+      }
+      .site-hero__title {
+        font-size: clamp(2.75rem, 8vw, 4.5rem);
+        font-weight: 400;
+        line-height: 1.08;
+        margin-bottom: 2rem;
+        color: var(--text);
+        white-space: nowrap;
+      }
+      @media (max-width: 640px) {
+        .site-hero__title {
+          white-space: normal;
+        }
+      }
+      .site-hero__title em {
+        font-style: italic;
+        color: var(--accent);
+        font-weight: 500;
+      }
+      .site-hero__rule {
+        width: 3rem;
+        height: 1px;
+        background: var(--border);
+        margin: 0 auto 2rem;
+      }
+      .site-hero__lines {
+        font-size: 0.95rem;
+        line-height: 1.75;
+        color: var(--muted);
+      }
+      .site-hero__lines p {
+        margin: 0;
+      }
+      .site-hero__gap {
+        margin-top: 1.25rem !important;
+      }
+      .site-hero__emphasis {
+        color: var(--text);
+      }
+      .site-hero__tagline {
+        margin-top: 2.5rem;
+        font-size: 0.9rem;
+        font-style: italic;
+        font-family: "Playfair Display", serif;
+        color: var(--muted);
+      }
+      /* Footer */
+      .site-footer {
+        border-top: 1px solid var(--border);
+        padding: 3rem 0;
+        margin-top: 0;
+        background: rgba(255, 255, 255, 0.25);
+      }
+      .site-footer__inner {
+        text-align: center;
+      }
+      .site-footer__brand {
+        font-family: "Playfair Display", serif;
+        font-size: 1.1rem;
+        color: var(--accent);
+        margin-bottom: 0.5rem;
+      }
+      .site-footer__note {
+        font-size: 0.75rem;
+        color: var(--muted);
+        letter-spacing: 0.06em;
+        margin-bottom: 1rem;
+        max-width: 28rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .site-footer__link {
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--muted);
+        text-decoration: none;
+      }
+      .site-footer__link:hover {
+        color: var(--accent);
+      }
+      .site-footer__nav {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0.35rem 0.65rem;
+      }
+      .site-footer__sep {
+        color: var(--border);
+        user-select: none;
+      }
+      /* Section 01 — editorial δίστηλο */
+      .section-01 {
+        padding-top: clamp(4.5rem, 12vw, 7.5rem);
+        padding-bottom: clamp(4.5rem, 11vw, 7rem);
+      }
+      .section-01__head {
+        text-align: center;
+        margin-bottom: clamp(2.75rem, 7vw, 4.5rem);
+        max-width: 42rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .section-01__title {
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: clamp(2.35rem, 5.8vw, 3.65rem);
+        font-weight: 400;
+        line-height: 1.12;
+        letter-spacing: -0.025em;
+        color: var(--text);
+        margin: 0;
+        white-space: nowrap;
+        text-align: center;
+      }
+      @media (max-width: 640px) {
+        .section-01__title {
+          white-space: normal;
+        }
+      }
+      .section-01__grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.14fr);
+        gap: 2rem clamp(2rem, 5.5vw, 5rem);
+        align-items: start;
+      }
+      @media (max-width: 768px) {
+        .section-01__grid {
+          grid-template-columns: 1fr;
+          gap: 2.75rem;
+        }
+      }
+      .section-01__block {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        min-width: 0;
+      }
+      .section-01__block .label-caps {
+        margin-bottom: 0;
+        letter-spacing: 0.2em;
+      }
+      .section-01__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+      }
+      .section-01__list li {
+        font-size: 0.95rem;
+        line-height: 1.65;
+        color: var(--text);
+        padding-bottom: 0.85rem;
+        border-bottom: 1px solid rgba(221, 217, 214, 0.65);
+      }
+      .section-01__list li:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .section-01__list strong {
+        font-weight: 500;
+        color: var(--text);
+      }
+      .section-01__lead {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+        line-height: 1.55;
+        color: var(--accent);
+        margin: 0;
+        max-width: 38rem;
+      }
+      .section-01__body {
+        font-size: 0.92rem;
+        line-height: 1.8;
+        color: var(--text);
+        margin: 0;
+        max-width: 36rem;
+      }
+      .section-01__meta {
+        display: block;
+        font-family: "Inter", sans-serif;
+        font-size: 0.62rem;
+        letter-spacing: 0.16em;
+        line-height: 1.5;
+        color: var(--muted);
+        text-transform: uppercase;
+        margin-top: 0.25rem;
+        max-width: 36rem;
+      }
+      .section-01__en {
+        font-family: "Playfair Display", serif;
+        font-size: 0.82rem;
+        font-style: italic;
+        line-height: 1.6;
+        color: var(--muted);
+        margin: 0.35rem 0 0;
+        max-width: 32rem;
+      }
+      /* Section 02 — πλήρες πλάτος container, δίστηλο + κάρτες */
+      .section-02 {
+        padding-top: clamp(3.25rem, 8vw, 5.5rem);
+        padding-bottom: clamp(3.25rem, 8vw, 5.5rem);
+      }
+      .section-02__head {
+        margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+      }
+      .section-02__title {
+        margin: 0;
+      }
+      .section-02__split {
+        display: grid;
+        grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+        gap: clamp(1.5rem, 4vw, 3.5rem);
+        align-items: stretch;
+        margin-bottom: clamp(2rem, 5vw, 3rem);
+        padding-bottom: clamp(1.75rem, 4vw, 2.75rem);
+        border-bottom: 1px solid var(--border);
+      }
+      @media (max-width: 900px) {
+        .section-02__split {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+      }
+      .section-02__quote {
+        margin: 0;
+        padding: 0.25rem 0 0.25rem 1.25rem;
+        border: none;
+        border-left: 3px solid var(--accent);
+        align-self: start;
+      }
+      .section-02__quote-lead {
+        font-size: clamp(1rem, 1.15vw, 1.1rem);
+        line-height: 1.65;
+        margin: 0 0 1rem;
+        color: var(--text);
+        font-family: "Inter", sans-serif;
+        font-weight: 300;
+        max-width: 38rem;
+      }
+      .section-02__quote-accent {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: clamp(1.15rem, 2.2vw, 1.35rem);
+        line-height: 1.42;
+        color: var(--accent);
+        margin: 0 0 0.35rem;
+        max-width: 34rem;
+      }
+      .section-02__quote-accent:last-of-type {
+        margin-bottom: 0;
+      }
+      .section-02__pillars {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: clamp(0.65rem, 1.8vw, 1.15rem);
+        margin: 0;
+        padding: 0;
+        border: none;
+        align-self: stretch;
+      }
+      @media (max-width: 900px) {
+        .section-02__pillars {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+      @media (max-width: 600px) {
+        .section-02__pillars {
+          grid-template-columns: 1fr;
+        }
+      }
+      .section-02__pillar {
+        text-align: center;
+        padding: clamp(1rem, 2.5vw, 1.45rem) 0.85rem;
+        min-height: 6.25rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 0.55rem;
+        box-shadow: 0 1px 2px rgba(44, 42, 39, 0.04);
+      }
+      .section-02__pillar-num {
+        display: block;
+        font-family: "Inter", sans-serif;
+        font-size: 0.6rem;
+        letter-spacing: 0.2em;
+        color: var(--muted);
+        text-transform: uppercase;
+        margin-bottom: 0.35rem;
+      }
+      .section-02__pillar-label {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1rem, 1.5vw, 1.12rem);
+        margin: 0;
+        color: var(--text);
+      }
+      .section-02__bottom {
+        display: flex;
+        flex-direction: column;
+        gap: 1.35rem;
+        width: 100%;
+      }
+      .section-02__mid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+        gap: clamp(1.5rem, 4vw, 3rem);
+        align-items: start;
+        text-align: left;
+      }
+      @media (max-width: 768px) {
+        .section-02__mid {
+          grid-template-columns: 1fr;
+          text-align: left;
+        }
+      }
+      .section-02__summary {
+        font-size: 0.95rem;
+        line-height: 1.72;
+        margin: 0;
+        color: var(--text);
+      }
+      .section-02__identity {
+        font-size: 0.74rem;
+        line-height: 1.55;
+        color: var(--muted);
+        font-style: italic;
+        font-family: "Playfair Display", serif;
+        margin: 0;
+        padding-top: 0.15rem;
+      }
+      .section-02__note {
+        width: 100%;
+        padding: 1.1rem 1.35rem;
+        border: 1px solid var(--border);
+        border-radius: 0.6rem;
+        background: rgba(255, 255, 255, 0.65);
+      }
+      .section-02__note p {
+        font-size: 0.82rem;
+        line-height: 1.65;
+        margin: 0;
+        color: var(--text);
+        max-width: 62rem;
+      }
+      /* Section 03 — καρουζέλ + κείμενο + περιεχόμενα
+         Σταθερή στήλη καρουζέλ + min-width:0 ώστε το track (300% πλάτος) να μην «σπάει» το grid */
+      .section-03__layout {
+        display: grid;
+        grid-template-columns: minmax(0, 17rem) minmax(0, 1fr) minmax(11rem, 0.72fr);
+        gap: clamp(1.35rem, 3.2vw, 2.5rem);
+        align-items: start;
+        margin-bottom: 0;
+      }
+      .section-03__carousel-wrap {
+        min-width: 0;
+        width: 100%;
+        max-width: 17rem;
+        justify-self: start;
+      }
+      .section-03__copy,
+      .section-03__panel {
+        min-width: 0;
+      }
+      @media (max-width: 1024px) {
+        .section-03__layout {
+          grid-template-columns: 1fr 1fr;
+          grid-template-areas:
+            "carousel carousel"
+            "copy contents";
+        }
+        .section-03__carousel-wrap {
+          grid-area: carousel;
+          justify-self: center;
+          max-width: min(17.5rem, 72vw);
+          width: 100%;
+        }
+        .section-03__copy {
+          grid-area: copy;
+        }
+        .section-03__panel {
+          grid-area: contents;
+        }
+      }
+      @media (max-width: 640px) {
+        .section-03__layout {
+          grid-template-columns: 1fr;
+          grid-template-areas: "carousel" "copy" "contents";
+        }
+        .section-03__carousel-wrap {
+          max-width: min(16rem, 86vw);
+        }
+      }
+      .section-03__carousel {
+        outline: none;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+      }
+      .section-03__carousel:focus-visible {
+        box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+        border-radius: 0.6rem;
+      }
+      .section-03__carousel-viewport {
+        overflow: hidden;
+        width: 100%;
+        max-width: 100%;
+        border-radius: 0.55rem;
+        border: 1px solid var(--border);
+        background: #fff;
+        box-shadow: 0 6px 26px rgba(44, 42, 39, 0.08);
+        isolation: isolate;
+      }
+      .section-03__carousel-track {
+        display: flex;
+        width: 300%;
+        max-width: none;
+        transition: transform 0.48s cubic-bezier(0.25, 0.1, 0.22, 1);
+        will-change: transform;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .section-03__carousel-track {
+          transition: none;
+        }
+      }
+      .section-03__slide {
+        flex: 0 0 33.333333%;
+        margin: 0;
+        padding: 0.4rem;
+        box-sizing: border-box;
+      }
+      .section-03__slide img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 0.35rem;
+        vertical-align: middle;
+      }
+      .section-03__carousel-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.65rem;
+        margin-top: 0.75rem;
+      }
+      .section-03__carousel-btn {
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: 1.35rem;
+        line-height: 1;
+        width: 2.25rem;
+        height: 2.25rem;
+        padding: 0;
+        border: 1px solid var(--border);
+        border-radius: 50%;
+        background: #fff;
+        color: var(--text);
+        cursor: pointer;
+        transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+      }
+      .section-03__carousel-btn:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .section-03__carousel-btn:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+      .section-03__carousel-dots {
+        display: flex;
+        gap: 0.4rem;
+        align-items: center;
+      }
+      .section-03__carousel-dot {
+        width: 0.45rem;
+        height: 0.45rem;
+        padding: 0;
+        border: none;
+        border-radius: 50%;
+        background: var(--border);
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.2s ease;
+      }
+      .section-03__carousel-dot.is-active {
+        background: var(--accent);
+        transform: scale(1.15);
+      }
+      .section-03__carousel-dot:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+      .section-03__copy .section-03__lead {
+        font-size: 1.05rem;
+        margin-bottom: 1.25rem;
+      }
+      .section-03__copy p.section-03__body {
+        font-size: 0.9rem;
+        line-height: 1.75;
+        margin-bottom: 1rem;
+      }
+      .section-03__copy p.section-03__body:last-of-type {
+        margin-bottom: 1.5rem;
+      }
+      .section-03__callout {
+        border-left: 4px solid var(--accent);
+        background: rgba(139, 26, 26, 0.05);
+        border-radius: 0 0.5rem 0.5rem 0;
+        padding: 1rem 1.25rem;
+      }
+      .section-03__callout p {
+        font-size: 0.85rem;
+        line-height: 1.65;
+        margin: 0;
+      }
+      .section-03__panel {
+        border: 1px solid var(--border);
+        border-radius: 1rem;
+        background: var(--card-bg);
+        padding: 1.5rem;
+      }
+      .section-03__panel-title {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+      }
+      .section-03__panel-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        margin: 0;
+        padding: 0;
+      }
+      .section-03__panel-list li {
+        font-size: 0.85rem;
+        display: flex;
+        gap: 0.5rem;
+        margin: 0;
+      }
+      .section-03__panel-list .dot {
+        color: var(--muted);
+        flex-shrink: 0;
+      }
+      /* Section 07 — υπότιτλος αμέσως κάτω από τον τίτλο */
+      .section-07__head {
+        text-align: center;
+        margin-bottom: 2.5rem;
+      }
+      .section-07__title.section-heading {
+        margin: 0 0 0.5rem;
+      }
+      .section-07__subtitle {
+        font-family: "Playfair Display", Georgia, serif;
+        font-style: italic;
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin: 0 auto;
+        max-width: 28rem;
+      }
+      /* Section 08 — λίστα αριστερά, κάρτα «Πηγές έμπνευσης» δεξιά */
+      .section-08__split {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(12rem, 0.4fr);
+        gap: clamp(1.75rem, 4vw, 3rem);
+        align-items: start;
+      }
+      @media (max-width: 900px) {
+        .section-08__split {
+          grid-template-columns: 1fr;
+          gap: 2.25rem;
+        }
+      }
+      .section-08__list {
+        min-width: 0;
+        max-width: 38rem;
+      }
+      @media (max-width: 900px) {
+        .section-08__list {
+          max-width: none;
+        }
+      }
+      .section-08__row {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1.25rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .section-08__row:first-child {
+        padding-top: 0;
+      }
+      .section-08__row-num {
+        font-family: "Inter", sans-serif;
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        color: var(--muted);
+        text-transform: uppercase;
+        min-width: 1.75rem;
+        flex-shrink: 0;
+      }
+      .section-08__row-label {
+        font-size: 1rem;
+        font-family: "Playfair Display", Georgia, serif;
+        margin: 0;
+        color: var(--text);
+      }
+      .section-08__figure {
+        margin: 0;
+        width: 100%;
+        max-width: min(18.5rem, 100%);
+        justify-self: end;
+        position: sticky;
+        top: calc(var(--header-h) + 1rem);
+      }
+      @media (max-width: 900px) {
+        .section-08__figure {
+          justify-self: center;
+          position: static;
+          max-width: min(17rem, 88vw);
+        }
+      }
+      .section-08__frame {
+        padding: 0.4rem;
+        background: #fff;
+        border: 1px solid rgba(44, 42, 39, 0.14);
+        border-radius: 0.55rem;
+        box-shadow: 0 8px 28px rgba(44, 42, 39, 0.09);
+      }
+      .section-08__img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 0.38rem;
+        vertical-align: middle;
+      }
+      /* Section 06 — χαρακτήρας brand: chips + κάρτες πυλώνων */
+      .section-06__header {
+        margin-bottom: clamp(1.35rem, 3vw, 2rem);
+        text-align: center;
+      }
+      .section-06__title.section-heading {
+        margin: 0 0 0.65rem;
+      }
+      .section-06__title strong {
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        font-size: 0.88em;
+        letter-spacing: 0.03em;
+      }
+      .section-06__lede {
+        font-family: "Inter", sans-serif;
+        font-size: clamp(0.62rem, 1.9vw, 0.78rem);
+        font-weight: 300;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 0 auto;
+        line-height: 1.55;
+        text-align: center;
+        white-space: nowrap;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 0 0.15rem 0.2rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+      }
+      .section-06__traits {
+        list-style: none;
+        margin: 0 auto clamp(2rem, 4.5vw, 2.85rem);
+        padding: 0 0 0.2rem;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        gap: 0.45rem;
+        max-width: 100%;
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+      }
+      .section-06__trait-item {
+        margin: 0;
+        flex-shrink: 0;
+      }
+      .section-06__trait {
+        display: inline-block;
+        padding: 0.4rem 0.85rem;
+        border-radius: 9999px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.85);
+        font-family: "Inter", sans-serif;
+        font-size: 0.7rem;
+        font-weight: 400;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: var(--muted);
+        box-shadow: 0 1px 2px rgba(44, 42, 39, 0.03);
+        white-space: nowrap;
+      }
+      @media (min-width: 960px) {
+        .section-06__traits {
+          overflow-x: visible;
+        }
+        .section-06__trait {
+          font-size: 0.74rem;
+          letter-spacing: 0.1em;
+          padding: 0.4rem 1rem;
+        }
+      }
+      .section-06__pillar-wrap {
+        border-top: 1px solid var(--border);
+        padding-top: clamp(1.85rem, 4vw, 2.65rem);
+      }
+      .section-06__pillars {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: clamp(1rem, 2.2vw, 1.65rem);
+        align-items: stretch;
+      }
+      @media (max-width: 768px) {
+        .section-06__pillars {
+          grid-template-columns: 1fr;
+        }
+      }
+      .section-06__pillar {
+        margin: 0;
+        padding: 1.4rem 1.35rem 1.5rem;
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid var(--border);
+        border-radius: 0.55rem;
+        border-left: 3px solid var(--accent);
+        box-shadow: 0 2px 14px rgba(44, 42, 39, 0.05);
+      }
+      .section-06__pillar-title {
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: clamp(1rem, 1.15vw, 1.08rem);
+        font-weight: 500;
+        color: var(--text);
+        margin: 0 0 0.55rem;
+        line-height: 1.38;
+      }
+      .section-06__pillar-body {
+        font-family: "Inter", sans-serif;
+        font-size: 0.86rem;
+        font-weight: 300;
+        line-height: 1.74;
+        color: var(--muted);
+        margin: 0;
+      }
+      /* Section 05 — κοινό + ψυχογραφικά */
+      .section-05__header {
+        margin-bottom: clamp(2rem, 4.5vw, 3rem);
+        text-align: center;
+      }
+      .section-05__title.section-heading {
+        margin: 0;
+      }
+      .section-05__grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+        gap: clamp(1.75rem, 4vw, 3.25rem);
+        align-items: start;
+      }
+      @media (max-width: 768px) {
+        .section-05__grid {
+          grid-template-columns: 1fr;
+          gap: 2.25rem;
+        }
+      }
+      .section-05__main {
+        min-width: 0;
+        padding: 0.15rem 0;
+      }
+      .section-05__kicker {
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        font-size: 0.95rem;
+        color: var(--text);
+        margin: 0 0 1rem;
+        line-height: 1.4;
+      }
+      .section-05__body {
+        font-family: "Inter", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 300;
+        line-height: 1.78;
+        color: var(--text);
+        margin: 0 0 1.5rem;
+      }
+      .section-05__pull {
+        margin: 0;
+        padding: 1.1rem 0 0;
+        border-top: 1px solid var(--border);
+      }
+      .section-05__pull-line {
+        font-family: "Playfair Display", Georgia, serif;
+        font-style: italic;
+        font-size: clamp(1rem, 1.2vw, 1.08rem);
+        line-height: 1.55;
+        color: var(--accent);
+        margin: 0;
+      }
+      .section-05__pull-line + .section-05__pull-line {
+        margin-top: 0.25rem;
+      }
+      .section-05__aside {
+        min-width: 0;
+        padding: 1.35rem 1.4rem 1.45rem;
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid var(--border);
+        border-radius: 0.55rem;
+        box-shadow: 0 2px 14px rgba(44, 42, 39, 0.05);
+      }
+      @media (max-width: 768px) {
+        .section-05__aside {
+          padding: 1.25rem 1.25rem 1.35rem;
+        }
+      }
+      .section-05__aside-label {
+        font-family: "Inter", sans-serif;
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 0 0 1rem;
+      }
+      .section-05__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .section-05__list-item {
+        display: flex;
+        gap: 0.65rem;
+        align-items: flex-start;
+        font-family: "Inter", sans-serif;
+        font-size: 0.88rem;
+        font-weight: 300;
+        line-height: 1.65;
+        color: var(--text);
+        padding: 0.8rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .section-05__list-item:first-child {
+        padding-top: 0;
+      }
+      .section-05__list-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .section-05__list-dash {
+        color: var(--muted);
+        font-size: 0.8rem;
+        line-height: 1.65;
+        flex-shrink: 0;
+        margin-top: 0.05em;
+      }
+      .section-05__list-text {
+        flex: 1;
+        min-width: 0;
+      }
+      /* Section 04 — δομημένο δίστηλο: quotes + πλαισιωμένη κάρτα */
+      .section-04__header {
+        margin-bottom: clamp(2rem, 4.5vw, 3.25rem);
+        text-align: center;
+      }
+      .section-04__title.section-heading {
+        margin: 0;
+      }
+      .section-04__split {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(15.5rem, 0.44fr);
+        gap: clamp(2rem, 5vw, 3.75rem);
+        align-items: start;
+      }
+      @media (max-width: 960px) {
+        .section-04__split {
+          grid-template-columns: 1fr;
+          gap: 2.25rem;
+        }
+      }
+      .section-04__quotes {
+        display: flex;
+        flex-direction: column;
+        gap: 1.15rem;
+        min-width: 0;
+      }
+      .section-04__card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 0.55rem;
+        padding: 1.35rem 1.6rem;
+        box-shadow:
+          0 1px 2px rgba(44, 42, 39, 0.04),
+          0 8px 24px rgba(44, 42, 39, 0.06);
+      }
+      .section-04__card-text {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: clamp(0.98rem, 1.1vw, 1.05rem);
+        line-height: 1.68;
+        margin: 0;
+        color: var(--text);
+      }
+      .section-04__aside {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        min-width: 0;
+      }
+      @media (max-width: 960px) {
+        .section-04__aside {
+          justify-content: center;
+        }
+      }
+      .section-04__figure {
+        margin: 0;
+        width: 100%;
+        max-width: min(21rem, 100%);
+        position: sticky;
+        top: calc(var(--header-h) + 1rem);
+      }
+      @media (max-width: 960px) {
+        .section-04__figure {
+          position: static;
+          max-width: min(19rem, 88vw);
+        }
+      }
+      .section-04__frame {
+        padding: 0.4rem;
+        background: #fff;
+        border: 1px solid rgba(44, 42, 39, 0.18);
+        border-radius: 0.55rem;
+        box-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.9) inset,
+          0 14px 36px rgba(44, 42, 39, 0.11);
+      }
+      .section-04__img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 0.38rem;
+        vertical-align: middle;
+      }
+      .section-04__caption {
+        margin: 0.65rem 0 0;
+        font-family: "Inter", sans-serif;
+        font-size: 0.62rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+        text-align: center;
+        line-height: 1.45;
+      }
+      /* Grids */
+      .two-col {
+        display: grid;
+        gap: 2.5rem;
+        align-items: start;
+      }
+      @media (min-width: 769px) {
+        .two-col {
+          gap: 3rem 4rem;
+        }
+      }
+      @media (max-width: 768px) {
+        .two-col {
+          grid-template-columns: 1fr !important;
+        }
+        .four-grid {
+          grid-template-columns: 1fr !important;
+        }
+        .three-col {
+          grid-template-columns: 1fr !important;
+        }
+      }
+      /* Gallery (Pause Mode) */
+      .visual-gallery {
+        margin-top: 2.5rem;
+      }
+      .visual-gallery__title {
+        font-family: "Inter", sans-serif;
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 1rem;
+        margin-top: 2rem;
+        white-space: nowrap;
+      }
+      @media (max-width: 768px) {
+        .visual-gallery__title {
+          white-space: normal;
+        }
+      }
+      .visual-gallery__title:first-child {
+        margin-top: 0;
+      }
+      .visual-gallery__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 0.75rem;
+      }
+      @media (min-width: 640px) {
+        .visual-gallery__grid {
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 1rem;
+        }
+      }
+      .visual-gallery__figure {
+        margin: 0;
+        border-radius: 0.65rem;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        background: #fff;
+        box-shadow: 0 1px 3px rgba(44, 42, 39, 0.06);
+      }
+      .visual-gallery__figure img {
+        display: block;
+        width: 100%;
+        height: auto;
+        vertical-align: middle;
+      }
+      .visual-gallery__placeholder {
+        border: 1.5px dashed var(--border);
+        border-radius: 0.75rem;
+        padding: 2rem 1.5rem;
+        text-align: center;
+        color: var(--muted);
+        font-style: italic;
+        font-family: "Playfair Display", serif;
+        font-size: 0.85rem;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body>
+    <SiteHeader />
+    <main class="page-main">
+      <slot name="hero" />
+      <div class="page-sections">
+        <slot />
+      </div>
+    </main>
+    <SiteFooter />
+  </body>
+</html>

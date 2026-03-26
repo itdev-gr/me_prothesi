@@ -1,0 +1,21 @@
+{
+  "name": "panagopoulou",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "assets:pdf": "node scripts/export-pdf-thumbs.mjs"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.2.2",
+    "astro": "^5.7.0",
+    "tailwindcss": "^4.2.2"
+  },
+  "devDependencies": {
+    "@napi-rs/canvas": "^0.1.97",
+    "pdfjs-dist": "^5.5.207"
+  }
+}

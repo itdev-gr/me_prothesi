@@ -1,0 +1,36 @@
+---
+const cards = [
+  { title: "Burnout Prevention", body: "Δομημένες παύσεις και εργαλεία αναγνώρισης κόπωσης μέσα στην εργάσιμη μέρα." },
+  { title: "Self-Leadership", body: "Εργαλεία για συνειδητή αυτοδιαχείριση και ηγεσία με πρόθεση." },
+  { title: "Emotional Literacy", body: "Ανάπτυξη συναισθηματικής νοημοσύνης και αυτοπαρατήρησης στον χώρο εργασίας." },
+  { title: "Boundary Setting", body: "Εργαλεία για υγιή όρια στην επαγγελματική καθημερινότητα." },
+];
+const usageTags = ["Focus sessions","Transition rituals","Team reflection tools"];
+---
+<section class="section-07" id="etaireies" aria-labelledby="section-07-title">
+  <div class="container">
+    <header class="section-07__head">
+      <h2 id="section-07-title" class="section-heading section-07__title">
+        <span class="section-number">07</span>
+        Και για εταιρείες.
+      </h2>
+      <p class="section-07__subtitle">Structured Reflection Tools for Employee Wellbeing.</p>
+    </header>
+    <div class="four-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+      {cards.map((card) => (
+        <div style="border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.5rem; background: var(--card-bg);">
+          <p style="font-weight: 500; font-size: 0.95rem; margin-bottom: 0.5rem;">{card.title}</p>
+          <p style="font-size: 0.83rem; color: var(--muted); line-height: 1.65;">{card.body}</p>
+        </div>
+      ))}
+    </div>
+    <div style="border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.25rem 1.5rem; background: var(--card-bg);">
+      <span class="label-caps" style="margin-bottom: 0.75rem;">Χρήση</span>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+        {usageTags.map((tag) => (
+          <span style="border: 1px solid var(--border); border-radius: 9999px; padding: 0.25rem 0.85rem; font-size: 0.78rem;">{tag}</span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

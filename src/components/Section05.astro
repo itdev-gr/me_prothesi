@@ -1,0 +1,42 @@
+---
+const items = [
+  "Αναζητούν εσωτερική καθαρότητα",
+  "Έχουν επίγνωση αλλά δυσκολεύονται στη δράση",
+  "Θέλουν μικρές, ρεαλιστικές παρεμβάσεις",
+];
+---
+<section class="section-05" id="gia-poion" aria-labelledby="section-05-title">
+  <div class="container">
+    <header class="section-05__header">
+      <h2 id="section-05-title" class="section-05__title section-heading">
+        <span class="section-number">05</span>
+        Για ποιον είναι.
+      </h2>
+    </header>
+
+    <div class="section-05__grid">
+      <div class="section-05__main">
+        <p class="section-05__kicker">Γυναίκες και άνδρες 28–45</p>
+        <p class="section-05__body">
+          Σε φάση μετάβασης, στην εργασία και στην προσωπική ζωή. Με ενδιαφέρον για προσωπική ανάπτυξη. Με κόπωση από το «θετικό thinking». Που θέλουν δομή, όχι απλά έμπνευση.
+        </p>
+        <div class="section-05__pull" aria-label="Κεντρικό μήνυμα">
+          <p class="section-05__pull-line">Η αλλαγή δεν έρχεται με φράσεις.</p>
+          <p class="section-05__pull-line">Έρχεται με πρόθεση.</p>
+        </div>
+      </div>
+
+      <aside class="section-05__aside" aria-label="Ψυχογραφικά χαρακτηριστικά">
+        <p class="section-05__aside-label">Ψυχογραφικά</p>
+        <ul class="section-05__list" role="list">
+          {items.map((item) => (
+            <li class="section-05__list-item">
+              <span class="section-05__list-dash" aria-hidden="true">—</span>
+              <span class="section-05__list-text">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>

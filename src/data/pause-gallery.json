@@ -1,0 +1,22 @@
+{
+  "box": [
+    "/images/pause-mode/box-01.png",
+    "/images/pause-mode/box-02.png",
+    "/images/pause-mode/box-03.png",
+    "/images/pause-mode/box-04.png",
+    "/images/pause-mode/box-05.png",
+    "/images/pause-mode/box-06.png",
+    "/images/pause-mode/box-07.png",
+    "/images/pause-mode/box-08.png",
+    "/images/pause-mode/box-09.png",
+    "/images/pause-mode/box-10.png",
+    "/images/pause-mode/box-11.png",
+    "/images/pause-mode/box-12.png"
+  ],
+  "stickers": [
+    "/images/pause-mode/stickers-01.png",
+    "/images/pause-mode/stickers-02.png",
+    "/images/pause-mode/stickers-03.png",
+    "/images/pause-mode/stickers-04.png"
+  ]
+}
