@@ -21,14 +21,31 @@ const { title } = Astro.props;
           display: none !important;
         }
 
-        section {
+        section:not(.site-hero) {
           padding: 4rem 1.5rem !important;
           grid-template-columns: 1fr !important;
           gap: 2.5rem !important;
         }
 
-        footer {
+        section.site-hero {
+          padding: 0 !important;
           grid-template-columns: 1fr !important;
+          gap: 0 !important;
+          min-height: 100svh !important;
+        }
+
+        footer #etaireies {
+          grid-template-columns: 1fr !important;
+        }
+
+        .site-colophon {
+          padding-left: 1.25rem !important;
+          padding-right: 1.25rem !important;
+        }
+
+        .site-footer-split-wrap {
+          padding-left: 1.25rem !important;
+          padding-right: 1.25rem !important;
         }
 
         h1 {
@@ -47,7 +64,7 @@ const { title } = Astro.props;
           display: none !important;
         }
 
-        section > div[style*='grid-template-columns: 1fr 1fr'] {
+        section:not(.site-hero) > div[style*='grid-template-columns: 1fr 1fr'] {
           grid-template-columns: 1fr !important;
         }
 
@@ -94,7 +111,19 @@ const { title } = Astro.props;
         href="https://www.instagram.com/meprothesi/"
         target="_blank"
         rel="noopener noreferrer"
-        style="font-size: 0.82rem; color: var(--ink); text-decoration: none; font-weight: 400;">Instagram</a
+        style="
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #fff;
+        background: rgba(28, 23, 18, 0.82);
+        padding: 0.5rem 1rem;
+        border-radius: 100px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 2px 14px rgba(0, 0, 0, 0.25);
+      ">Instagram</a
       >
     </nav>
 

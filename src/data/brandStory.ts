@@ -30,7 +30,7 @@ const imgs = [
 
 export const brandStorySections: BrandStorySectionData[] = [
   {
-    sectionId: 'ti-einai',
+    sectionId: 'section-01',
     title: 'Τι είναι το «Με Πρόθεση»',
     image: imgs[0],
     imageLeft: true,

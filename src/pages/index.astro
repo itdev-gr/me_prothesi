@@ -6,22 +6,28 @@ import { brandStorySections } from '../data/brandStory';
 
 <Layout title="Με Πρόθεση">
   <section
+    class="site-hero"
     style="
   min-height: 100vh;
+  min-height: 100svh;
+  background: #F6F2ED;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.38fr);
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
   overflow: hidden;
-  position: relative;
 "
   >
-    <!-- LEFT PANEL -->
+    <!-- LEFT: Text -->
     <div
       style="
-    background: #C9956A;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 7rem 4rem 5rem 5rem;
+    padding: clamp(5rem, 12vw, 8rem) clamp(2rem, 5vw, 6rem);
+    max-width: 680px;
+    width: 100%;
+    justify-self: center;
+    min-height: 0;
   "
     >
       <p
@@ -30,36 +36,36 @@ import { brandStorySections } from '../data/brandStory';
       font-weight: 500;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: rgba(28,23,18,0.45);
+      color: rgba(28,23,18,0.4);
       margin-bottom: 2.5rem;
+      font-family: var(--font-body);
     "
       >
         Δημιουργημένο από ψυχοθεραπεύτρια
       </p>
 
       <h1
-        class="reveal"
         style="
-      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
-      font-weight: 800;
-      color: #1C1712;
-      line-height: 1.1;
-      letter-spacing: -0.025em;
-      margin-bottom: 0.5rem;
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 5vw, 4.5rem);
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.25rem;
     "
       >
         Η αλλαγή ξεκινά
       </h1>
 
       <h1
-        class="reveal"
-        data-delay="80"
         style="
-      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 5vw, 4.5rem);
       font-weight: 300;
       font-style: italic;
-      color: rgba(28,23,18,0.55);
-      line-height: 1.1;
+      color: var(--accent);
+      line-height: 1.05;
       letter-spacing: -0.01em;
       margin-bottom: 2.5rem;
     "
@@ -67,124 +73,87 @@ import { brandStorySections } from '../data/brandStory';
         Με Πρόθεση.
       </h1>
 
-      <div style="width: 36px; height: 1.5px; background: rgba(28,23,18,0.25); margin-bottom: 2rem;"></div>
+      <div
+        style="
+      width: 36px; height: 1px;
+      background: var(--accent);
+      margin-bottom: 2rem;
+      opacity: 0.6;
+    "
+      >
+      </div>
 
       <p
-        class="reveal"
-        data-delay="120"
         style="
-      font-size: 1.2rem;
-      font-weight: 500;
-      color: #1C1712;
-      line-height: 1.55;
-      margin-bottom: 0.75rem;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.65;
+      max-width: 380px;
+      margin-bottom: 0.6rem;
     "
       >
         Μικρές παύσεις για πιο συνειδητή εργασία.
       </p>
 
       <p
-        class="reveal"
-        data-delay="150"
         style="
-      font-size: 1.05rem;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
       font-weight: 300;
-      color: rgba(28,23,18,0.6);
-      line-height: 1.75;
-      max-width: 400px;
-      margin-bottom: 2.5rem;
+      color: var(--ink-soft);
+      line-height: 1.8;
+      max-width: 380px;
+      margin-bottom: 4rem;
     "
       >
         Δομημένες ψυχοεκπαιδευτικές εμπειρίες σε μορφή τελετουργίας. Η αλλαγή δεν ξεκινά εξωτερικά. Ξεκινά εσωτερικά.
       </p>
 
-      <!-- Κενό στη θέση των CTA (ίδιο margin + ύψος περίπου όπως το pill κουμπί) -->
+      <!-- Stats row -->
       <div
-        class="reveal"
-        data-delay="200"
-        aria-hidden="true"
-        style="margin-bottom: 4rem; min-height: 2.85rem;"
-      ></div>
-
-      <!-- Stats -->
-      <div
-        class="reveal"
-        data-delay="250"
         style="
       display: flex;
-      gap: 2rem;
+      gap: 2.5rem;
       padding-top: 2rem;
-      border-top: 1px solid rgba(28,23,18,0.15);
+      border-top: 1px solid rgba(28,23,18,0.1);
     "
       >
         <div>
           <p
-            style="
-          font-size: 1.6rem; font-weight: 800;
-          color: #1C1712; line-height: 1;
-          letter-spacing: -0.03em;
-        "
+            style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 500; color: var(--ink); line-height: 1; letter-spacing: -0.02em;"
           >
             7–10
           </p>
           <p
-            style="
-          font-size: 0.6rem; font-weight: 500;
-          color: rgba(28,23,18,0.45);
-          margin-top: 0.3rem;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-        "
+            style="font-family: var(--font-body); font-size: 0.6rem; font-weight: 500; color: rgba(28,23,18,0.4); margin-top: 0.3rem; letter-spacing: 0.12em; text-transform: uppercase;"
           >
             ημέρες / box
           </p>
         </div>
-
-        <div style="width:1px; background: rgba(28,23,18,0.12);"></div>
-
+        <div style="width:1px; background: rgba(28,23,18,0.1);"></div>
         <div>
           <p
-            style="
-          font-size: 1.6rem; font-weight: 800;
-          color: #1C1712; line-height: 1;
-          letter-spacing: -0.03em;
-        "
+            style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 500; color: var(--ink); line-height: 1; letter-spacing: -0.02em;"
           >
             10+
           </p>
           <p
-            style="
-          font-size: 0.6rem; font-weight: 500;
-          color: rgba(28,23,18,0.45);
-          margin-top: 0.3rem;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-        "
+            style="font-family: var(--font-body); font-size: 0.6rem; font-weight: 500; color: rgba(28,23,18,0.4); margin-top: 0.3rem; letter-spacing: 0.12em; text-transform: uppercase;"
           >
             κάρτες ασκήσεων
           </p>
         </div>
-
-        <div style="width:1px; background: rgba(28,23,18,0.12);"></div>
-
+        <div style="width:1px; background: rgba(28,23,18,0.1);"></div>
         <div>
           <p
-            style="
-          font-size: 1.6rem; font-weight: 800;
-          color: #1C1712; line-height: 1;
-          letter-spacing: -0.03em;
-        "
+            style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 500; color: var(--ink); line-height: 1; letter-spacing: -0.02em;"
           >
             1
           </p>
           <p
-            style="
-          font-size: 0.6rem; font-weight: 500;
-          color: rgba(28,23,18,0.45);
-          margin-top: 0.3rem;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-        "
+            style="font-family: var(--font-body); font-size: 0.6rem; font-weight: 500; color: rgba(28,23,18,0.4); margin-top: 0.3rem; letter-spacing: 0.12em; text-transform: uppercase;"
           >
             ψυχοθεραπεύτρια
           </p>
@@ -192,14 +161,22 @@ import { brandStorySections } from '../data/brandStory';
       </div>
     </div>
 
-    <!-- RIGHT PANEL: Hero video -->
-    <div style="position: relative; overflow: hidden; min-height: 100vh; background: #B8845A;">
+    <!-- RIGHT: Hero video -->
+    <div
+      style="
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    min-height: 100svh;
+    background: #C4956A;
+  "
+    >
       <video
         autoplay
         muted
         loop
         playsinline
-        aria-label="Pause Mode box"
+        aria-label="Pause Mode"
         poster="/images/pause-carousel/slide-1.png"
         style="
         position: absolute;
@@ -214,15 +191,34 @@ import { brandStorySections } from '../data/brandStory';
       </video>
       <div
         style="
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          to right,
-          rgba(201,149,106,0.4) 0%,
-          transparent 30%
-        );
+        position: absolute; inset: 0;
+        background: linear-gradient(to right, rgba(196,149,106,0.35) 0%, transparent 35%);
       "
       >
+      </div>
+
+      <!-- Badge -->
+      <div
+        style="
+        position: absolute;
+        bottom: 3rem; left: 2rem;
+        background: rgba(246,242,237,0.15);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(246,242,237,0.25);
+        border-radius: 12px;
+        padding: 1rem 1.5rem;
+      "
+      >
+        <p
+          style="font-family: var(--font-body); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(246,242,237,0.7); margin-bottom: 0.25rem;"
+        >
+          Box 01
+        </p>
+        <p
+          style="font-family: var(--font-display); font-size: 1rem; font-weight: 400; color: #F6F2ED; font-style: italic;"
+        >
+          Pause Mode
+        </p>
       </div>
     </div>
   </section>
@@ -231,7 +227,7 @@ import { brandStorySections } from '../data/brandStory';
 
   <!-- FEATURES: 01 02 03 -->
   <section
-    id="pause-mode"
+    id="section-03"
     style="
   padding: 7rem 3rem;
   background: var(--white);
@@ -370,75 +366,95 @@ import { brandStorySections } from '../data/brandStory';
     </div>
   </section>
 
-  <!-- Κενό διάστημα (ίδια διαστάσεις με την παλιά ενότητα, χωρίς κείμενο) -->
-  <section
-    id="etaireies"
+  <!-- Κενό μεταξύ teal testimonial και split footer -->
+  <div
     aria-hidden="true"
-    style="
-  padding: 4rem 3rem;
-  background: var(--white);
-  text-align: center;
-"
+    style="height: clamp(2.25rem, 5vw, 3.75rem); background: var(--white);"
   >
-    <div style="min-height: 5.5rem"></div>
-  </section>
+  </div>
 
-  <!-- FOOTER -->
-  <footer style="display: grid; grid-template-columns: 1fr 1fr;">
-    <!-- Left: Dark -->
+  <footer style="display: flex; flex-direction: column; background: var(--white);">
+    <!-- 5rem κενό αριστερά/δεξιά γύρω από το split block -->
+    <div
+      class="site-footer-split-wrap"
+      style="padding: 0 5rem; background: var(--white); box-sizing: border-box;"
+    >
+    <div
+      id="etaireies"
+      style="
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: min(560px, 72vh);
+    overflow: hidden;
+  "
+    >
+    <!-- 1: Dark brand -->
     <div
       style="
-    background: var(--dark);
-    padding: 4rem 3rem;
-    display: flex; flex-direction: column; gap: 1.5rem;
+    background: #1C1712;
+    padding: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 4vw, 3rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1.25rem;
   "
     >
       <p
         style="
-      font-size: 1rem; font-weight: 600;
-      color: var(--white);
+      font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+      font-weight: 600;
+      color: #F6F2ED;
+      letter-spacing: -0.02em;
     "
       >
         Με Πρόθεση
       </p>
       <p
         style="
-      font-size: 0.82rem; font-weight: 300;
-      color: rgba(255,255,255,0.5);
-      line-height: 1.7; max-width: 280px;
+      font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+      font-weight: 300;
+      color: rgba(246, 242, 237, 0.58);
+      line-height: 1.72;
+      max-width: 26rem;
     "
       >
-        Structured reflection tools · τελετουργική μορφή · καθημερινότητα.<br /><br />
+        Structured reflection tools · τελετουργική μορφή · καθημερινότητα.
+      </p>
+      <p
+        style="
+      font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+      font-weight: 300;
+      color: rgba(246, 242, 237, 0.58);
+      line-height: 1.72;
+      max-width: 26rem;
+    "
+      >
         Δημιουργημένο από ψυχοθεραπεύτρια.
       </p>
-      <div style="display: flex; gap: 1.5rem; margin-top: 1rem; flex-wrap: wrap;">
-        <a
-          href="https://www.instagram.com/meprothesi/"
-          target="_blank"
-          rel="noopener noreferrer"
-          style="font-size: 0.78rem; color: rgba(255,255,255,0.5); text-decoration: none;">Instagram</a
-        >
-      </div>
     </div>
 
-    <!-- Right: Salmon -->
+    <!-- 2: Peach — CTA (ίδιο ύψος στήλης, κεντραρισμένο) -->
     <div
       style="
-    background: var(--salmon-bg);
-    padding: 4rem 3rem;
+    background: #F6F2ED;
+    padding: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 4vw, 3rem);
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    gap: 1.5rem;
-    position: relative;
-    overflow: hidden;
+    text-align: center;
+    gap: 1.75rem;
   "
     >
       <p
         style="
-      font-size: 1.4rem; font-weight: 700;
-      color: var(--ink); line-height: 1.3;
+      font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+      font-weight: 700;
+      color: #1C1712;
+      line-height: 1.35;
+      max-width: 18rem;
     "
       >
         Ναι, θέλω να ξεκινήσω<br />Με Πρόθεση.
@@ -446,16 +462,29 @@ import { brandStorySections } from '../data/brandStory';
       <a href="https://www.instagram.com/meprothesi/" target="_blank" rel="noopener noreferrer" class="btn-pill">
         Βρες μας στο Instagram
       </a>
+    </div>
+    </div>
+    </div>
 
-      <img
-        src="/images/pause-carousel/slide-3.png"
-        alt=""
-        style="
-        position: absolute; right: -1rem; bottom: -1rem;
-        width: 180px; opacity: 0.4;
-        border-radius: 8px;
-      "
-      />
+    <!-- Colophon -->
+    <div
+      class="site-colophon"
+      style="
+    text-align: center;
+    padding: 1.35rem 5rem 2.25rem;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: rgba(28, 23, 18, 0.48);
+    background: var(--white);
+    line-height: 1.6;
+  "
+    >
+      © 2035 by Με Πρόθεση. Powered and secured by
+      <a
+        href="https://www.itdev.gr/"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="color: var(--ink); text-decoration: underline; text-underline-offset: 2px;">ITDEV</a>.
     </div>
   </footer>
 </Layout>

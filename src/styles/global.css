@@ -12,6 +12,8 @@
   --accent: #C4956A;
   --line: rgba(28, 23, 18, 0.12);
   --font: 'Poppins', sans-serif;
+  --font-body: var(--font);
+  --font-display: var(--font);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
