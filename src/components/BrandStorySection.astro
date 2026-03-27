@@ -1,0 +1,95 @@
+---
+import type { BrandStorySectionData } from '../data/brandStory';
+
+interface Props {
+  section: BrandStorySectionData;
+}
+
+const { section } = Astro.props;
+const { sectionId, title, image, imageLeft, bg, parts } = section;
+const bgCss = bg === 'lavender' ? 'var(--lavender)' : 'var(--white)';
+
+const h3Style =
+  'font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); margin: 1.25rem 0 0.65rem;';
+const pStyle = 'font-size: 0.88rem; font-weight: 300; color: var(--ink-soft); line-height: 1.75; margin-bottom: 0.75rem;';
+const ulStyle = 'margin: 0 0 0.75rem 1rem; padding: 0; font-size: 0.88rem; font-weight: 300; color: var(--ink-soft); line-height: 1.65;';
+
+const sectionStyle = `display: flex; flex-wrap: wrap; flex-direction: row; align-items: center; justify-content: center; gap: clamp(1.5rem, 3vw, 2.25rem); padding: 7rem 3rem; background: ${bgCss};`;
+
+const bodyStyle = 'flex: 0 1 auto; max-width: min(38rem, 100%); min-width: 0;';
+
+const mediaStyle =
+  'flex-shrink: 0; border-radius: 10px; overflow: hidden; background: #EDE8E3; width: 100%; max-width: min(16.5rem, 85vw); box-shadow: 0 14px 36px rgba(28,23,18,0.1);';
+---
+
+<section id={sectionId} class="reveal brand-story" style={sectionStyle}>
+  {
+    imageLeft ? (
+      <>
+        <div class="brand-story__media" style={mediaStyle}>
+          <img
+            src={image}
+            alt={title}
+            style="width: 100%; height: auto; display: block; object-fit: contain;"
+            loading="lazy"
+          />
+        </div>
+        <div class="brand-story__body" style={bodyStyle}>
+          <h2
+            style="font-size: clamp(1.35rem, 2.8vw, 1.85rem); font-weight: 800; color: var(--ink); line-height: 1.2; margin-bottom: 1.25rem;"
+          >
+            {title}
+          </h2>
+          {parts.map((part) => {
+            if (part.type === 'p') {
+              return <p style={pStyle}>{part.text}</p>;
+            }
+            if (part.type === 'h3') {
+              return <h3 style={h3Style}>{part.text}</h3>;
+            }
+            return (
+              <ul style={ulStyle}>
+                {part.items.map((item) => (
+                  <li style="margin-bottom: 0.35rem;">{item}</li>
+                ))}
+              </ul>
+            );
+          })}
+        </div>
+      </>
+    ) : (
+      <>
+        <div class="brand-story__body" style={bodyStyle}>
+          <h2
+            style="font-size: clamp(1.35rem, 2.8vw, 1.85rem); font-weight: 800; color: var(--ink); line-height: 1.2; margin-bottom: 1.25rem;"
+          >
+            {title}
+          </h2>
+          {parts.map((part) => {
+            if (part.type === 'p') {
+              return <p style={pStyle}>{part.text}</p>;
+            }
+            if (part.type === 'h3') {
+              return <h3 style={h3Style}>{part.text}</h3>;
+            }
+            return (
+              <ul style={ulStyle}>
+                {part.items.map((item) => (
+                  <li style="margin-bottom: 0.35rem;">{item}</li>
+                ))}
+              </ul>
+            );
+          })}
+        </div>
+        <div class="brand-story__media" style={mediaStyle}>
+          <img
+            src={image}
+            alt={title}
+            style="width: 100%; height: auto; display: block; object-fit: contain;"
+            loading="lazy"
+          />
+        </div>
+      </>
+    )
+  }
+</section>
