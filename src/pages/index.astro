@@ -5,6 +5,13 @@ import { brandStorySections } from '../data/brandStory';
 ---
 
 <Layout title="Με Πρόθεση">
+  <link
+    slot="head"
+    rel="preload"
+    href="/images/hero2.mp4"
+    as="video"
+    type="video/mp4"
+  />
   <section
     class="site-hero"
     style="
@@ -176,8 +183,8 @@ import { brandStorySections } from '../data/brandStory';
         muted
         loop
         playsinline
+        preload="auto"
         aria-label="Pause Mode"
-        poster="/images/pause-carousel/slide-1.png"
         style="
         position: absolute;
         inset: 0;
@@ -479,7 +486,7 @@ import { brandStorySections } from '../data/brandStory';
     line-height: 1.6;
   "
     >
-      © 2035 by Με Πρόθεση. Powered and secured by
+      © 2026 by Με Πρόθεση. Powered and secured by
       <a
         href="https://www.itdev.gr/"
         target="_blank"
