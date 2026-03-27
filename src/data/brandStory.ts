@@ -12,40 +12,24 @@ export type BrandStorySectionData = {
   parts: StoryPart[];
 };
 
-const imgs = [
-  '/images/pause-carousel/slide-1.png',
-  '/images/pause-carousel/slide-2.png',
-  '/images/pause-carousel/slide-3.png',
-  '/images/pause-mode/box-01.png',
-  '/images/pause-mode/box-02.png',
-  '/images/pause-mode/box-03.png',
-  '/images/pause-mode/box-04.png',
-  '/images/pause-mode/box-05.png',
-  '/images/pause-mode/box-06.png',
-  '/images/pause-mode/box-07.png',
-  '/images/pause-mode/box-08.png',
-  '/images/pause-mode/box-09.png',
-  '/images/pause-mode/box-10.png',
-] as const;
-
 export const brandStorySections: BrandStorySectionData[] = [
   {
     sectionId: 'section-01',
     title: 'Τι είναι το «Με Πρόθεση»',
-    image: imgs[0],
+    image: '/images/pause-carousel/slide-1.png',
     imageLeft: true,
     bg: 'lavender',
     parts: [
       {
         type: 'p',
-        text: 'Το Με Πρόθεση είναι ένα δημιουργικό project που γεννήθηκε από την αγάπη για τη συνειδητή ζωή και δημιουργήθηκε από ψυχοθεραπεύτρια.',
+        text: 'Ένα δημιουργικό project γεννημένο από την αγάπη για τη συνειδητή ζωή. Δημιουργημένο από ψυχοθεραπεύτρια.',
       },
-      { type: 'h3', text: 'ΔΕΝ ΕΙΝΑΙ:' },
+      { type: 'h3', text: 'Δεν είναι' },
       {
         type: 'ul',
-        items: ['brand με φράσεις.', 'motivational προϊόν.', 'διακοσμητικό ritual object.'],
+        items: ['Brand με φράσεις.', 'Motivational προϊόν.', 'Διακοσμητικό ritual object.'],
       },
-      { type: 'h3', text: 'Είναι:' },
+      { type: 'h3', text: 'Είναι' },
       {
         type: 'p',
         text: 'Δομημένες, μικρές ψυχοεκπαιδευτικές εμπειρίες σε μορφή τελετουργίας για την καθημερινότητα.',
@@ -53,23 +37,11 @@ export const brandStorySections: BrandStorySectionData[] = [
     ],
   },
   {
-    sectionId: 'brand-2',
-    title: 'Κεντρική ιδέα',
-    image: imgs[1],
+    sectionId: 'section-02',
+    title: 'Η κεντρική ιδέα',
+    image: '/images/pause-carousel/slide-2.png',
     imageLeft: false,
     bg: 'white',
-    parts: [
-      { type: 'p', text: 'Η αλλαγή δεν ξεκινά εξωτερικά. Ξεκινά εσωτερικά – Με Πρόθεση.' },
-      { type: 'p', text: 'Η αλλαγή δεν έρχεται με φράσεις. Έρχεται με πρόθεση.' },
-      { type: 'p', text: 'Το box δεν είναι challenge. Είναι μια μικρή συνάντηση με εσένα.' },
-    ],
-  },
-  {
-    sectionId: 'brand-3',
-    title: 'Brand Statement',
-    image: imgs[2],
-    imageLeft: true,
-    bg: 'lavender',
     parts: [
       {
         type: 'p',
@@ -78,111 +50,50 @@ export const brandStorySections: BrandStorySectionData[] = [
       { type: 'p', text: 'Δεν προσφέρει έτοιμες απαντήσεις. Προσφέρει χώρο.' },
       {
         type: 'p',
-        text: 'Κάθε box είναι μια εσωστρεφής εμπειρία που συνδυάζει:',
-      },
-      {
-        type: 'ul',
-        items: ['άσκηση', 'επίγνωση', 'τελετουργία'],
-      },
-      {
-        type: 'p',
-        text: 'ώστε η αλλαγή να ξεκινά από μέσα – με συνειδητή επιλογή, όχι με πίεση.',
-      },
-      { type: 'p', text: 'Δεν αντικαθιστά την ψυχοθεραπεία.' },
-      { type: 'p', text: 'Είναι ψυχοεκπαιδευτικό εργαλείο αυτοπαρατήρησης.' },
-    ],
-  },
-  {
-    sectionId: 'brand-4',
-    title: 'Brand Positioning',
-    image: imgs[3],
-    imageLeft: false,
-    bg: 'white',
-    parts: [
-      { type: 'h3', text: 'Κατηγορία που δημιουργούμε:' },
-      {
-        type: 'p',
-        text: '«Mini structured psychological interventions in ritual form»',
-      },
-      {
-        type: 'p',
-        text: 'Είμαστε: Structured reflection tools για καθημερινή συνειδητή αλλαγή.',
+        text: 'Κάθε box είναι μια εσωστρεφής εμπειρία που συνδυάζει άσκηση, επίγνωση και τελετουργία, ώστε η αλλαγή να ξεκινά από μέσα με συνειδητή επιλογή, όχι με πίεση.',
       },
     ],
   },
   {
-    sectionId: 'brand-5',
-    title: 'Προϊόν – Δομή Experience',
-    image: imgs[4],
+    sectionId: 'section-03',
+    title: 'Box: Pause Mode',
+    image: '/images/pause-carousel/slide-3.png',
     imageLeft: true,
     bg: 'lavender',
     parts: [
-      { type: 'h3', text: 'Μορφή:' },
       {
         type: 'p',
-        text: 'Κάρτες αφύπνησης για κάθε περίπτωση και αντίστοιχα θεματικά αυτοκόλλητα. Θεματικά boxes με δομημένη εμπειρία 7 ή 10 ημερών.',
+        text: 'Μικρές παύσεις για πιο συνειδητή εργασία. Στην καθημερινή εργασία λειτουργούμε συχνά στον αυτόματο.',
       },
-      { type: 'h3', text: 'Κάθε box περιλαμβάνει:' },
+      {
+        type: 'p',
+        text: 'Το κερί λειτουργεί ως ritual anchor. Νευρολογικό σημείο έναρξης πριν από κάποια άσκηση. Όχι διακοσμητικό αντικείμενο.',
+      },
+      { type: 'h3', text: 'Περιεχόμενα' },
       {
         type: 'ul',
         items: [
-          'Κάρτες αφύπνησης (awareness triggers)',
-          'Κάρτες άσκησης (structured micro interventions)',
-          'Ritual anchor (κερί)',
-          'Συνοδευτικό οδηγό χρήσης',
-          'Μικρά συμβολικά στοιχεία (π.χ. αυτοκόλλητα με πρόθεση)',
-        ],
-      },
-      { type: 'h3', text: 'Το κερί λειτουργεί ως:' },
-      {
-        type: 'ul',
-        items: [
-          '→ ritual anchor',
-          '→ νευρολογικό σημείο έναρξης',
-          '→ όχι διακοσμητικό αντικείμενο',
+          '4 Κάρτες Αφύπνισης',
+          '10 Κάρτες Άσκησης (3 επίπεδα)',
+          'Αυτοκόλλητο «PAUSE.» + «SLOW DOWN»',
+          'Κερί (ritual anchor)',
+          'Συνοδευτικός οδηγός χρήσης',
         ],
       },
     ],
   },
   {
-    sectionId: 'brand-6',
-    title: 'Πρώτο Box: «Ξεκινάω»',
-    image: imgs[5],
+    sectionId: 'section-04',
+    title: 'Για ποιον είναι',
+    image: '/images/pause-mode/box-01.png',
     imageLeft: false,
     bg: 'white',
     parts: [
-      { type: 'h3', text: 'Θεματική:' },
-      { type: 'p', text: 'Δράση χωρίς τελειότητα.' },
-      { type: 'h3', text: 'Στόχος:' },
       {
         type: 'p',
-        text: 'Να βοηθήσει το άτομο να κινηθεί χωρίς να περιμένει να νιώσει έτοιμο.',
+        text: 'Γυναίκες και άνδρες 28–45, σε φάση μετάβασης. Με ενδιαφέρον για προσωπική ανάπτυξη και κόπωση από το «θετικό thinking».',
       },
-      { type: 'h3', text: 'Περιεχόμενο:' },
-      {
-        type: 'ul',
-        items: [
-          '3 κάρτες αφύπνησης',
-          '6 κάρτες άσκησης',
-          '2 αυτοκόλλητα: «Με Πρόθεση» / «Με Πρόθεση. Όχι με Φόβο»',
-          'Κερί με μήνυμα «Ξεκινάω»',
-        ],
-      },
-    ],
-  },
-  {
-    sectionId: 'brand-7',
-    title: 'Target Audience',
-    image: imgs[6],
-    imageLeft: true,
-    bg: 'lavender',
-    parts: [
-      { type: 'h3', text: 'Primary:' },
-      {
-        type: 'p',
-        text: 'Γυναίκες & άνδρες 28–45 σε φάση μετάβασης, με ενδιαφέρον για προσωπική ανάπτυξη, με κόπωση από το «θετικό thinking» που θέλουν δομή, όχι απλά έμπνευση.',
-      },
-      { type: 'h3', text: 'Ψυχογραφικά:' },
+      { type: 'h3', text: 'Ψυχογραφικά' },
       {
         type: 'ul',
         items: [
@@ -194,17 +105,17 @@ export const brandStorySections: BrandStorySectionData[] = [
     ],
   },
   {
-    sectionId: 'brand-8',
-    title: 'Corporate Extension',
-    image: imgs[7],
-    imageLeft: false,
-    bg: 'white',
+    sectionId: 'section-05',
+    title: 'Και για εταιρείες',
+    image: '/images/pause-mode/box-02.png',
+    imageLeft: true,
+    bg: 'lavender',
     parts: [
       {
         type: 'p',
-        text: 'Το Με Πρόθεση μπορεί να εξελιχθεί σε: Structured Reflection Tools for Employee Wellbeing',
+        text: 'Structured Reflection Tools for Employee Wellbeing.',
       },
-      { type: 'h3', text: 'Θεματικές:' },
+      { type: 'h3', text: 'Θεματικές' },
       {
         type: 'ul',
         items: [
@@ -214,97 +125,18 @@ export const brandStorySections: BrandStorySectionData[] = [
           'Boundary Setting',
         ],
       },
-      { type: 'h3', text: 'Χρήση:' },
-      {
-        type: 'ul',
-        items: ['Focus sessions', 'Transition rituals', 'Team reflection tools'],
-      },
     ],
   },
   {
-    sectionId: 'brand-9',
-    title: 'Brand Personality',
-    image: imgs[8],
-    imageLeft: true,
-    bg: 'lavender',
-    parts: [
-      {
-        type: 'ul',
-        items: [
-          'Ήσυχο, Καθαρό, Σοβαρό αλλά όχι βαρύ, Γήινο, Στοχαστικό, Δομημένο',
-          'Δεν φωνάζει.',
-          'Δεν υπόσχεται μεταμόρφωση.',
-          'Δεν πιέζει.',
-        ],
-      },
-    ],
-  },
-  {
-    sectionId: 'brand-10',
-    title: 'Οπτική ταυτότητα',
-    image: imgs[9],
-    imageLeft: false,
-    bg: 'white',
-    parts: [
-      { type: 'h3', text: 'Logo Concept:' },
-      {
-        type: 'p',
-        text: 'Ένα ακανόνιστο, οργανικό περίγραμμα, σαν χειροποίητη γραμμή. Σε ένα σημείο λεπταίνει και δημιουργεί άνοιγμα.',
-      },
-      {
-        type: 'p',
-        text: 'Συμβολίζει: Όχι τέλειος κύκλος αλλά ζωντανό σύστημα. Διαδικασία, όχι τελειότητα.',
-      },
-    ],
-  },
-  {
-    sectionId: 'brand-11',
-    title: 'Tagline',
-    image: imgs[10],
-    imageLeft: true,
-    bg: 'lavender',
-    parts: [{ type: 'p', text: 'Η αλλαγή ξεκινάει Με Πρόθεση.' }],
-  },
-  {
-    sectionId: 'brand-12',
-    title: '12. Go-to-Market Strategy',
-    image: imgs[11],
-    imageLeft: false,
-    bg: 'white',
-    parts: [
-      { type: 'h3', text: 'Φάση 1 – Εκπαίδευση κοινού (2 μήνες)' },
-      { type: 'p', text: 'Instagram-only strategy:' },
-      {
-        type: 'ul',
-        items: [
-          'Μικρές προθέσεις εβδομάδας',
-          'Micro reflections',
-          'Υπενθύμιση ορίων',
-          'Polls για έρευνα',
-        ],
-      },
-      {
-        type: 'p',
-        text: 'Στόχος: Να εκπαιδευτεί το κοινό στην έννοια της πρόθεσης ως πράξη.',
-      },
-      { type: 'h3', text: 'Φάση 2 – Limited Drop' },
-      { type: 'p', text: 'Πρώτη συλλογή σε περιορισμένο αριθμό.' },
-      {
-        type: 'p',
-        text: 'Το positioning: Όχι προϊόν. Εμπειρία.',
-      },
-    ],
-  },
-  {
-    sectionId: 'brand-13',
+    sectionId: 'section-06',
     title: 'Μακροπρόθεσμο όραμα',
-    image: imgs[12],
-    imageLeft: true,
-    bg: 'lavender',
+    image: '/images/pause-mode/box-03.png',
+    imageLeft: false,
+    bg: 'white',
     parts: [
       {
         type: 'p',
-        text: 'Το Με Πρόθεση μπορεί να εξελιχθεί σε:',
+        text: 'Το Με Πρόθεση εξελίσσεται.',
       },
       {
         type: 'ul',
@@ -312,6 +144,148 @@ export const brandStorySections: BrandStorySectionData[] = [
           'Θεματική σειρά boxes',
           'Corporate wellbeing toolkits',
           'Workshops',
+        ],
+      },
+    ],
+  },
+  {
+    sectionId: 'section-07',
+    title: 'Τοποθέτηση στον χώρο',
+    image: '/images/pause-mode/box-04.png',
+    imageLeft: true,
+    bg: 'lavender',
+    parts: [
+      {
+        type: 'p',
+        text: 'Δημιουργούμε μια κατηγορία που δεν είναι «motivation» ούτε «διακόσμηση γραφείου» — είναι δομημένη αντανάκλαση σε μορφή τελετουργίας.',
+      },
+      { type: 'h3', text: 'Σε μία πρόταση' },
+      {
+        type: 'p',
+        text: '«Mini structured psychological interventions in ritual form» — μικρές, επαναλήψιμες παρεμβάσεις που χωράνε στην πραγματική μέρα.',
+      },
+      {
+        type: 'p',
+        text: 'Δεν ανταγωνιζόμαστε τα ημερολόγια θετικότητας· δίνουμε ρυθμό, όχι πίεση.',
+      },
+    ],
+  },
+  {
+    sectionId: 'section-08',
+    title: 'Πρώτο box: «Ξεκινάω»',
+    image: '/images/pause-mode/box-05.png',
+    imageLeft: false,
+    bg: 'white',
+    parts: [
+      {
+        type: 'p',
+        text: 'Θεματική: δράση χωρίς τελειότητα. Στόχος να κινηθείς χωρίς να περιμένεις να νιώσεις «έτοιμος».',
+      },
+      { type: 'h3', text: 'Τι περιλαμβάνει' },
+      {
+        type: 'ul',
+        items: [
+          '3 κάρτες αφύπνησης',
+          '6 κάρτες άσκησης',
+          '2 αυτοκόλλητα: «Με Πρόθεση» / «Με Πρόθεση. Όχι με φόβο»',
+          'Κερί με μήνυμα «Ξεκινάω»',
+        ],
+      },
+    ],
+  },
+  {
+    sectionId: 'section-09',
+    title: 'Χαρακτήρας του brand',
+    image: '/images/pause-mode/box-06.png',
+    imageLeft: true,
+    bg: 'lavender',
+    parts: [
+      {
+        type: 'p',
+        text: 'Ήσυχο, καθαρό, γήινο. Σοβαρό χωρίς βαρύτητα — σαν χώρος που σε αφήνει να αναπνεύσεις.',
+      },
+      { type: 'h3', text: 'Τρεις αρχές τόνου' },
+      {
+        type: 'ul',
+        items: [
+          'Δεν φωνάζει· δεν διεκδικεί την προσοχή με κραυγές.',
+          'Δεν υπόσχεται μεταμόρφωση μιας νύχτας.',
+          'Δεν πιέζει για απόλυτη θετικότητα· σέβεται την κούραση.',
+        ],
+      },
+    ],
+  },
+  {
+    sectionId: 'section-10',
+    title: 'Οπτική ταυτότητα',
+    image: '/images/pause-mode/box-07.png',
+    imageLeft: false,
+    bg: 'white',
+    parts: [
+      {
+        type: 'p',
+        text: 'Το λογότυπο ζωγραφίζει ένα ακανόνιστο, οργανικό περίγραμμα — σαν χειροποίητη γραμμή που σε ένα σημείο λεπταίνει και «ανοίγει».',
+      },
+      {
+        type: 'p',
+        text: 'Συμβολίζει διαδικασία, όχι τέλειο κύκλο· ζωντανό σύστημα που εξελίσσεται, όχι κλειστή φόρμα.',
+      },
+    ],
+  },
+  {
+    sectionId: 'section-11',
+    title: 'Tagline',
+    image: '/images/pause-carousel/slide-2.png',
+    imageLeft: true,
+    bg: 'lavender',
+    parts: [
+      {
+        type: 'p',
+        text: 'Η αλλαγή ξεκινά Με Πρόθεση.',
+      },
+      {
+        type: 'p',
+        text: 'Μια πρόταση που δένει προϊόν, ρυθμό και εσωτερική επιλογή — χωρίς να υπόσχεται μαγικά.',
+      },
+    ],
+  },
+  {
+    sectionId: 'section-12',
+    title: 'Πώς συναντά το κοινό',
+    image: '/images/pause-mode/box-08.png',
+    imageLeft: false,
+    bg: 'white',
+    parts: [
+      { type: 'h3', text: 'Φάση 1 — Εκπαίδευση κοινού' },
+      {
+        type: 'p',
+        text: 'Έμφαση στο Instagram: μικρές προθέσεις εβδομάδας, micro reflections, υπενθυμίσεις ορίων. Στόχος να γνωρίσει το κοινό την πρόθεση ως πράξη, όχι ως σύνθημα.',
+      },
+      { type: 'h3', text: 'Φάση 2 — Limited drop' },
+      {
+        type: 'p',
+        text: 'Περιορισμένη πρώτη συλλογή. Το μήνυμα: όχι ακόμα ένα προϊόν — μια εμπειρία που σέβεται τον ρυθμό σου.',
+      },
+    ],
+  },
+  {
+    sectionId: 'section-13',
+    title: 'Υπόσχεση & όρια',
+    image: '/images/pause-mode/box-09.png',
+    imageLeft: true,
+    bg: 'lavender',
+    parts: [
+      {
+        type: 'p',
+        text: 'Το Με Πρόθεση είναι ψυχοεκπαιδευτικό εργαλείο αυτοπαρατήρησης· δεν αντικαθιστά ψυχοθεραπεία ή ιατρική φροντίδα.',
+      },
+      { type: 'h3', text: 'Δέσμευση' },
+      {
+        type: 'ul',
+        items: [
+          'Ειλικρινής γλώσσα, χωρίς υπερβολικές υποσχέσεις.',
+          'Σεβασμός στον ρυθμό και τα όρια του ατόμου.',
+          'Σαφής δομή — ώστε η παύση να είναι επιλογή, όχι τύψεις.',
         ],
       },
     ],

@@ -230,11 +230,11 @@ import { brandStorySections } from '../data/brandStory';
     </div>
   </section>
 
-  {brandStorySections.map((s) => <BrandStorySection section={s} />)}
+  {brandStorySections.map((s, i) => <BrandStorySection section={s} continued={i > 0} />)}
 
   <!-- FEATURES: 01 02 03 -->
   <section
-    id="section-03"
+    id="pause-features"
     style="
   padding: 7rem 3rem;
   background: var(--white);
