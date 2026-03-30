@@ -133,6 +133,11 @@ img { display: block; max-width: 100%; }
   margin: 0;
 }
 
+.site-hero__title-line1 {
+  display: block;
+  white-space: nowrap;
+}
+
 .site-hero__title-accent {
   display: block;
   margin-top: 0.12em;
@@ -350,5 +355,11 @@ img { display: block; max-width: 100%; }
     text-align: center;
     hyphens: auto;
     overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 380px) {
+  .site-hero__title-line1 {
+    white-space: normal;
   }
 }

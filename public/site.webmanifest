@@ -1,0 +1,22 @@
+{
+  "name": "Με Πρόθεση",
+  "short_name": "Με Πρόθεση",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#F6F2ED",
+  "theme_color": "#F6F2ED",
+  "icons": [
+    {
+      "src": "/images/logo.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/logo.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    }
+  ]
+}
