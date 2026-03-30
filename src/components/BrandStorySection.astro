@@ -8,9 +8,18 @@ interface Props {
 
 const { section, continued = false } = Astro.props;
 const bg = section.bg === 'lavender' ? '#F0EBE3' : '#FAFAF8';
-const sectionKicker = section.sectionId.replace(/^section-/, '');
 const firstPIndex = section.parts.findIndex((p) => p.type === 'p');
 const isTaglineBlock = section.sectionId === 'section-11';
+
+const TITLE_ONE_LINE_IDS = new Set([
+  'section-01',
+  'section-06',
+  'section-07',
+  'section-08',
+  'section-09',
+  'section-12',
+]);
+const titleOneLine = TITLE_ONE_LINE_IDS.has(section.sectionId);
 ---
 
 <section
@@ -52,24 +61,10 @@ const isTaglineBlock = section.sectionId === 'section-11';
 
     <!-- Text -->
     <div class="brand-story__body" style={`order: ${section.imageLeft ? 1 : 0};`}>
-      <p
-        style="
-        font-size: 0.62rem;
-        font-weight: 500;
-        letter-spacing: 0.22em;
-        text-transform: uppercase;
-        color: #8B6F47;
-        margin-bottom: 1.25rem;
-        font-family: var(--font-body);
-      "
-      >
-        {sectionKicker}
-      </p>
-
       <h2
+        class:list={['brand-story__title', titleOneLine && 'brand-story__title--one-line']}
         style="
         font-family: var(--font-display);
-        font-size: clamp(1.8rem, 3.5vw, 2.8rem);
         font-weight: 300;
         color: var(--ink);
         line-height: 1.15;
@@ -168,6 +163,15 @@ const isTaglineBlock = section.sectionId === 'section-11';
     transition: transform 0.35s ease, box-shadow 0.35s ease;
   }
 
+  .brand-story__title {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  }
+
+  .brand-story__title--one-line {
+    white-space: nowrap;
+    font-size: clamp(1.2rem, 2.85vw, 2.8rem);
+  }
+
   @media (max-width: 768px) {
     .brand-story__grid {
       grid-template-columns: 1fr !important;
@@ -177,6 +181,16 @@ const isTaglineBlock = section.sectionId === 'section-11';
     .brand-story__media,
     .brand-story__body {
       order: 0 !important;
+    }
+
+    .brand-story__title--one-line {
+      font-size: clamp(1rem, 4.2vw, 2.05rem);
+    }
+  }
+
+  @media (max-width: 360px) {
+    .brand-story__title--one-line {
+      white-space: normal;
     }
   }
 </style>

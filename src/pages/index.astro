@@ -25,151 +25,46 @@ import { brandStorySections } from '../data/brandStory';
 "
   >
     <!-- LEFT: Text -->
-    <div
-      style="
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: clamp(5rem, 12vw, 8rem) clamp(2rem, 5vw, 6rem);
-    max-width: 680px;
-    width: 100%;
-    justify-self: center;
-    min-height: 0;
-  "
-    >
-      <p
-        style="
-      font-size: 0.62rem;
-      font-weight: 500;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: rgba(28,23,18,0.4);
-      margin-bottom: 2.5rem;
-      font-family: var(--font-body);
-    "
-      >
-        Δημιουργημένο από ψυχοθεραπεύτρια
-      </p>
+    <div class="site-hero__content">
+      <div class="site-hero__intro">
+        <p class="site-hero__kicker">Δημιουργημένο από ψυχοθεραπεύτρια</p>
 
-      <h1
-        style="
-      font-family: var(--font-display);
-      font-size: clamp(3rem, 5vw, 4.5rem);
-      font-weight: 300;
-      color: var(--ink);
-      line-height: 1.05;
-      letter-spacing: -0.01em;
-      margin-bottom: 0.25rem;
-    "
-      >
-        Η αλλαγή ξεκινά
-      </h1>
+        <h1 class="site-hero__title" id="hero-title">
+          Η αλλαγή<br aria-hidden="true" />
+          ξεκινά
+          <span class="site-hero__title-accent">Με Πρόθεση.</span>
+        </h1>
 
-      <h1
-        style="
-      font-family: var(--font-display);
-      font-size: clamp(3rem, 5vw, 4.5rem);
-      font-weight: 300;
-      font-style: italic;
-      color: var(--accent);
-      line-height: 1.05;
-      letter-spacing: -0.01em;
-      margin-bottom: 2.5rem;
-    "
-      >
-        Με Πρόθεση.
-      </h1>
+        <div class="site-hero__rule" aria-hidden="true"></div>
 
-      <div
-        style="
-      width: 36px; height: 1px;
-      background: var(--accent);
-      margin-bottom: 2rem;
-      opacity: 0.6;
-    "
-      >
+        <p class="site-hero__lead">Μικρές παύσεις για πιο συνειδητή εργασία.</p>
+
+        <p class="site-hero__body">
+          Δομημένες ψυχοεκπαιδευτικές εμπειρίες σε μορφή τελετουργίας. Η αλλαγή δεν ξεκινά εξωτερικά· ξεκινά εσωτερικά.
+        </p>
       </div>
 
-      <p
-        style="
-      font-family: var(--font-body);
-      font-size: 1rem;
-      font-weight: 400;
-      color: var(--ink);
-      line-height: 1.65;
-      max-width: 380px;
-      margin-bottom: 0.6rem;
-    "
-      >
-        Μικρές παύσεις για πιο συνειδητή εργασία.
-      </p>
-
-      <p
-        style="
-      font-family: var(--font-body);
-      font-size: 0.85rem;
-      font-weight: 300;
-      color: var(--ink-soft);
-      line-height: 1.8;
-      max-width: 380px;
-      margin-bottom: 4rem;
-    "
-      >
-        Δομημένες ψυχοεκπαιδευτικές εμπειρίες σε μορφή τελετουργίας. Η αλλαγή δεν ξεκινά εξωτερικά. Ξεκινά εσωτερικά.
-      </p>
-
-      <!-- Stats row -->
-      <div
-        style="
-      display: flex;
-      gap: 2.5rem;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(28,23,18,0.1);
-    "
-      >
-        <div>
-          <p
-            style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 500; color: var(--ink); line-height: 1; letter-spacing: -0.02em;"
-          >
-            7–10
-          </p>
-          <p
-            style="font-family: var(--font-body); font-size: 0.6rem; font-weight: 500; color: rgba(28,23,18,0.4); margin-top: 0.3rem; letter-spacing: 0.12em; text-transform: uppercase;"
-          >
-            ημέρες / box
-          </p>
+      <div class="site-hero__stats">
+        <div class="site-hero__stat">
+          <p class="site-hero__stat-num">7–10</p>
+          <p class="site-hero__stat-label">ημέρες / box</p>
         </div>
-        <div style="width:1px; background: rgba(28,23,18,0.1);"></div>
-        <div>
-          <p
-            style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 500; color: var(--ink); line-height: 1; letter-spacing: -0.02em;"
-          >
-            10+
-          </p>
-          <p
-            style="font-family: var(--font-body); font-size: 0.6rem; font-weight: 500; color: rgba(28,23,18,0.4); margin-top: 0.3rem; letter-spacing: 0.12em; text-transform: uppercase;"
-          >
-            κάρτες ασκήσεων
-          </p>
+        <div class="site-hero__stat-divider" aria-hidden="true"></div>
+        <div class="site-hero__stat">
+          <p class="site-hero__stat-num">10+</p>
+          <p class="site-hero__stat-label">κάρτες ασκήσεων</p>
         </div>
-        <div style="width:1px; background: rgba(28,23,18,0.1);"></div>
-        <div>
-          <p
-            style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 500; color: var(--ink); line-height: 1; letter-spacing: -0.02em;"
-          >
-            1
-          </p>
-          <p
-            style="font-family: var(--font-body); font-size: 0.6rem; font-weight: 500; color: rgba(28,23,18,0.4); margin-top: 0.3rem; letter-spacing: 0.12em; text-transform: uppercase;"
-          >
-            ψυχοθεραπεύτρια
-          </p>
+        <div class="site-hero__stat-divider" aria-hidden="true"></div>
+        <div class="site-hero__stat">
+          <p class="site-hero__stat-num">1</p>
+          <p class="site-hero__stat-label">ψυχοθεραπεύτρια</p>
         </div>
       </div>
     </div>
 
     <!-- RIGHT: Hero video -->
     <div
+      class="site-hero__media"
       style="
     position: relative;
     overflow: hidden;
@@ -203,30 +98,6 @@ import { brandStorySections } from '../data/brandStory';
       "
       >
       </div>
-
-      <!-- Badge -->
-      <div
-        style="
-        position: absolute;
-        bottom: 3rem; left: 2rem;
-        background: rgba(246,242,237,0.15);
-        backdrop-filter: blur(16px);
-        border: 1px solid rgba(246,242,237,0.25);
-        border-radius: 12px;
-        padding: 1rem 1.5rem;
-      "
-      >
-        <p
-          style="font-family: var(--font-body); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(246,242,237,0.7); margin-bottom: 0.25rem;"
-        >
-          Box 01
-        </p>
-        <p
-          style="font-family: var(--font-display); font-size: 1rem; font-weight: 400; color: #F6F2ED; font-style: italic;"
-        >
-          Pause Mode
-        </p>
-      </div>
     </div>
   </section>
 
@@ -254,12 +125,13 @@ import { brandStorySections } from '../data/brandStory';
     </h2>
 
     <div
+      class="pause-features__grid"
       style="
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 2rem;
     max-width: 900px;
-    margin: 0 auto 3rem;
+    margin: 0 auto;
   "
     >
       <div class="reveal" style="padding: 1rem; position: relative;">
@@ -312,8 +184,6 @@ import { brandStorySections } from '../data/brandStory';
         </p>
       </div>
     </div>
-
-    <a href="#etaireies" class="btn-pill reveal">Δες για εταιρείες</a>
   </section>
 
   <!-- TESTIMONIAL -->
@@ -388,6 +258,7 @@ import { brandStorySections } from '../data/brandStory';
     >
     <div
       id="etaireies"
+      class="footer-split-grid"
       style="
     display: grid;
     grid-template-columns: 1fr 1fr;
