@@ -1,7 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import BrandStorySection from '../components/BrandStorySection.astro';
-import { brandStorySections } from '../data/brandStory';
+import BrandStoryChapter from '../components/BrandStoryChapter.astro';
+import { getBrandStoryChapters } from '../data/brandStory';
+
+const brandStoryChapters = getBrandStoryChapters();
 ---
 
 <Layout title="Με Πρόθεση">
@@ -12,18 +14,7 @@ import { brandStorySections } from '../data/brandStory';
     as="video"
     type="video/mp4"
   />
-  <section
-    class="site-hero"
-    style="
-  min-height: 100vh;
-  min-height: 100svh;
-  background: #F6F2ED;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: stretch;
-  overflow: hidden;
-"
-  >
+  <section class="site-hero" aria-label="Εισαγωγή">
     <!-- LEFT: Text -->
     <div class="site-hero__content">
       <div class="site-hero__intro">
@@ -31,10 +22,11 @@ import { brandStorySections } from '../data/brandStory';
 
         <h1 class="site-hero__title" id="hero-title">
           <span class="site-hero__title-line1">Η αλλαγή ξεκινά</span>
-          <span class="site-hero__title-accent">Με Πρόθεση.</span>
+          <span class="site-hero__title-accent-block">
+            <span class="site-hero__title-accent">Με Πρόθεση.</span>
+            <span class="site-hero__rule" aria-hidden="true"></span>
+          </span>
         </h1>
-
-        <div class="site-hero__rule" aria-hidden="true"></div>
 
         <p class="site-hero__lead">Μικρές παύσεις για πιο συνειδητή εργασία.</p>
 
@@ -42,153 +34,42 @@ import { brandStorySections } from '../data/brandStory';
           Δομημένες ψυχοεκπαιδευτικές εμπειρίες σε μορφή τελετουργίας. Η αλλαγή δεν ξεκινά εξωτερικά· ξεκινά εσωτερικά.
         </p>
       </div>
-
-      <div class="site-hero__stats">
-        <div class="site-hero__stat">
-          <p class="site-hero__stat-num">7–10</p>
-          <p class="site-hero__stat-label">ημέρες / box</p>
-        </div>
-        <div class="site-hero__stat-divider" aria-hidden="true"></div>
-        <div class="site-hero__stat">
-          <p class="site-hero__stat-num">10+</p>
-          <p class="site-hero__stat-label">κάρτες ασκήσεων</p>
-        </div>
-        <div class="site-hero__stat-divider" aria-hidden="true"></div>
-        <div class="site-hero__stat">
-          <p class="site-hero__stat-num">1</p>
-          <p class="site-hero__stat-label">ψυχοθεραπεύτρια</p>
-        </div>
-      </div>
     </div>
 
     <!-- RIGHT: Hero video -->
-    <div
-      class="site-hero__media"
-      style="
-    position: relative;
-    overflow: hidden;
-    min-height: 100vh;
-    min-height: 100svh;
-    background: #C4956A;
-  "
-    >
+    <div class="site-hero__media">
       <video
+        class="site-hero__video"
         autoplay
         muted
         loop
         playsinline
         preload="auto"
         aria-label="Pause Mode"
-        style="
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-      "
       >
         <source src="/images/hero2.mp4" type="video/mp4" />
       </video>
-      <div
-        style="
-        position: absolute; inset: 0;
-        background: linear-gradient(to right, rgba(196,149,106,0.35) 0%, transparent 35%);
-      "
-      >
-      </div>
+      <div class="site-hero__media-gradient" aria-hidden="true"></div>
     </div>
   </section>
 
-  {brandStorySections.map((s, i) => <BrandStorySection section={s} continued={i > 0} />)}
-
-  <!-- FEATURES: 01 02 03 -->
-  <section
-    id="pause-features"
-    style="
-  padding: 7rem 3rem;
-  background: var(--white);
-  text-align: center;
-"
-  >
-    <h2
-      class="reveal"
-      style="
-    font-size: clamp(1.8rem,4vw,2.8rem);
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 4rem;
-  "
-    >
-      Κάθε box περιέχει
-    </h2>
-
-    <div
-      class="pause-features__grid"
-      style="
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 2rem;
-    max-width: 900px;
-    margin: 0 auto;
-  "
-    >
-      <div class="reveal" style="padding: 1rem; position: relative;">
-        <p
-          style="
-        font-size: 7rem; font-weight: 800;
-        color: rgba(196,149,106,0.15);
-        line-height: 1;
-        margin-bottom: -1.5rem;
-        font-family: var(--font);
-      "
-        >
-          01
-        </p>
-        <p style="font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 0.5rem;">Άσκηση</p>
-        <p style="font-size: 0.83rem; font-weight: 300; color: var(--ink-soft);">
-          Κάρτες αφύπνισης και ασκήσεων σε 3 επίπεδα δυσκολίας.
-        </p>
-      </div>
-      <div class="reveal" data-delay="100" style="padding: 1rem; position: relative;">
-        <p
-          style="
-        font-size: 7rem; font-weight: 800;
-        color: rgba(196,149,106,0.15);
-        line-height: 1;
-        margin-bottom: -1.5rem;
-      "
-        >
-          02
-        </p>
-        <p style="font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 0.5rem;">Επίγνωση</p>
-        <p style="font-size: 0.83rem; font-weight: 300; color: var(--ink-soft);">
-          Δομημένες στιγμές αυτοπαρατήρησης μέσα στην εργάσιμη μέρα.
-        </p>
-      </div>
-      <div class="reveal" data-delay="200" style="padding: 1rem; position: relative;">
-        <p
-          style="
-        font-size: 7rem; font-weight: 800;
-        color: rgba(196,149,106,0.15);
-        line-height: 1;
-        margin-bottom: -1.5rem;
-      "
-        >
-          03
-        </p>
-        <p style="font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 0.5rem;">Τελετουργία</p>
-        <p style="font-size: 0.83rem; font-weight: 300; color: var(--ink-soft);">
-          Κερί ritual anchor και οδηγός χρήσης για καθημερινή ρουτίνα.
-        </p>
-      </div>
-    </div>
-  </section>
+  {
+    brandStoryChapters.map((chapter, i) => (
+      <BrandStoryChapter
+        chapterId={chapter.chapterId}
+        label={chapter.label}
+        title={chapter.title}
+        intro={chapter.intro}
+        sections={chapter.sections}
+        continued={i > 0}
+      />
+    ))
+  }
 
   <!-- TESTIMONIAL -->
   <section
     style="
-  padding: 5rem 3rem;
+  padding: 4.25rem 3rem;
   background: var(--teal);
   text-align: center;
 "

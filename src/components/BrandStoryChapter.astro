@@ -1,0 +1,130 @@
+---
+import type { BrandStorySectionData } from '../data/brandStory';
+import BrandStoryCardsRow from './BrandStoryCardsRow.astro';
+
+interface Props {
+  chapterId: string;
+  label: string;
+  title: string;
+  intro: string;
+  sections: BrandStorySectionData[];
+  continued?: boolean;
+}
+
+const { chapterId, label, title, intro, sections, continued = false } = Astro.props;
+
+function chunkBy<T>(arr: T[], size: number): T[][] {
+  const out: T[][] = [];
+  for (let i = 0; i < arr.length; i += size) {
+    out.push(arr.slice(i, i + size));
+  }
+  return out;
+}
+
+const cardRows = chunkBy(sections, 3);
+
+const useMarketAsideBento =
+  sections.length === 4 &&
+  sections[0].sectionId === 'section-12' &&
+  sections[1].sectionId === 'section-13' &&
+  sections[2].sectionId === 'section-10' &&
+  sections[3].sectionId === 'section-11';
+---
+
+<section
+  id={chapterId}
+  class:list={['brand-story-chapter', continued && 'brand-story-chapter--continued']}
+  aria-labelledby={`${chapterId}-heading`}
+>
+  <header class="brand-story-chapter__header reveal">
+    <p class="brand-story-chapter__eyebrow">Μέρος {label}</p>
+    <h2 class="brand-story-chapter__title" id={`${chapterId}-heading`}>
+      {title}
+    </h2>
+    <p class="brand-story-chapter__intro">{intro}</p>
+  </header>
+
+  <div class="brand-story-chapter__rows">
+    {
+      useMarketAsideBento ? (
+        <BrandStoryCardsRow sections={sections} staggerOffset={0} />
+      ) : (
+        cardRows.map((row, i) => (
+          <BrandStoryCardsRow
+            sections={row}
+            showBottomDivider={i < cardRows.length - 1}
+            staggerOffset={i * 260}
+          />
+        ))
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .brand-story-chapter {
+    overflow: clip;
+    border-bottom: 1px solid rgba(28, 23, 18, 0.07);
+    padding-bottom: 1.5rem;
+  }
+
+  .brand-story-chapter--continued {
+    box-shadow: inset 0 1px 0 rgba(28, 23, 18, 0.06);
+  }
+
+  .brand-story-chapter__header {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 2.75rem 5rem 1.25rem;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .brand-story-chapter__eyebrow {
+    margin: 0 0 0.5rem;
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #a67c52;
+  }
+
+  .brand-story-chapter__title {
+    margin: 0 auto 0.85rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.45rem, 2.4vw, 2rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    color: var(--ink);
+    max-width: min(36rem, 100%);
+  }
+
+  .brand-story-chapter__intro {
+    margin: 0 auto;
+    max-width: 42rem;
+    font-family: var(--font-body);
+    font-size: clamp(0.88rem, 1.15vw, 0.98rem);
+    font-weight: 300;
+    line-height: 1.72;
+    color: var(--ink-soft);
+  }
+
+  .brand-story-chapter__rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  @media (max-width: 899px) {
+    .brand-story-chapter {
+      overflow: visible;
+    }
+
+    .brand-story-chapter__header {
+      padding: max(2.5rem, calc(env(safe-area-inset-top, 0px) + 3.75rem)) 1.5rem
+        0.85rem;
+    }
+  }
+</style>

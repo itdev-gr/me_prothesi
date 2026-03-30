@@ -1,0 +1,419 @@
+---
+import type { BrandStorySectionData } from '../data/brandStory';
+
+interface Props {
+  section: BrandStorySectionData;
+  enterDelay?: number;
+}
+
+const TITLE_ONE_LINE_IDS = new Set([
+  'section-01',
+  'section-04',
+  'section-07',
+  'section-08',
+  'section-09',
+]);
+
+const { section, enterDelay = 0 } = Astro.props;
+
+function renderParts(sec: BrandStorySectionData) {
+  return sec.parts.map((part) => {
+    if (part.type === 'p') {
+      return {
+        type: 'p' as const,
+        text: part.text,
+        emphasis: part.emphasis === true,
+      };
+    }
+    if (part.type === 'h3') return { type: 'h3' as const, text: part.text };
+    if (part.type === 'ul') return { type: 'ul' as const, items: part.items };
+    return null;
+  });
+}
+
+const parts = renderParts(section);
+const titleOneLine = TITLE_ONE_LINE_IDS.has(section.sectionId);
+const isVisionStackCard = section.sectionId === 'section-13';
+---
+
+<article
+  id={section.sectionId}
+  class:list={[
+    'brand-story-card',
+    'reveal',
+    section.bg === 'lavender' && 'brand-story-card--tone-warm',
+    isVisionStackCard && 'brand-story-card--vision-stack',
+  ]}
+  data-delay={String(enterDelay)}
+>
+  <div class="brand-story-card__content">
+    <h2
+      class:list={[
+        'brand-story-card__title',
+        titleOneLine && 'brand-story-card__title--one-line',
+      ]}
+    >
+      {section.title}
+    </h2>
+    <div class="brand-story-card__parts">
+      {
+        parts.map((part) => {
+          if (!part) return null;
+          if (part.type === 'p') {
+            return (
+              <p
+                class:list={[
+                  'brand-story-card__p',
+                  part.emphasis && 'brand-story-card__p--emphasis',
+                ]}
+              >
+                {part.text}
+              </p>
+            );
+          }
+          if (part.type === 'h3') {
+            return <p class="brand-story-card__h3">{part.text}</p>;
+          }
+          if (part.type === 'ul') {
+            if (
+              part.items.length === 3 &&
+              (section.layout === 'stack-3-bullets' ||
+                section.sectionId === 'section-13')
+            ) {
+              const [a, b, c] = part.items;
+              return (
+                <div class="brand-story-card__stack3">
+                  <div class="brand-story-card__stack3-top">
+                    <span class="brand-story-card__arrow">→</span>
+                    <span class="brand-story-card__stack3-text">{a}</span>
+                  </div>
+                  <div class="brand-story-card__stack3-row">
+                    <div class="brand-story-card__stack3-cell">
+                      <span class="brand-story-card__arrow">→</span>
+                      <span class="brand-story-card__stack3-text">{b}</span>
+                    </div>
+                    <div class="brand-story-card__stack3-cell">
+                      <span class="brand-story-card__arrow">→</span>
+                      <span class="brand-story-card__stack3-text">{c}</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+            return (
+              <ul class="brand-story-card__ul">
+                {part.items.map((item) => (
+                  <li class="brand-story-card__li">
+                    <span class="brand-story-card__arrow">→</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            );
+          }
+          return null;
+        })
+      }
+    </div>
+  </div>
+</article>
+
+<style>
+  .brand-story-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fdfcfa;
+    border: 1px solid rgba(28, 23, 18, 0.07);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.8) inset,
+      0 12px 40px rgba(28, 23, 18, 0.06),
+      0 4px 12px rgba(28, 23, 18, 0.04);
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100%;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+    transform-origin: center top;
+  }
+
+  .brand-story-card.reveal {
+    opacity: 0;
+    transform: translateY(1.75rem) scale(0.945) rotateX(5deg);
+    transition:
+      opacity 0.78s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.85s cubic-bezier(0.22, 1, 0.45, 1),
+      box-shadow 0.25s ease;
+  }
+
+  .brand-story-card.reveal.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .brand-story-card.reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  /* Κινητό: χωρίς rotateX — αποφεύγει επικάλυψη με το περιεχόμενο από πάνω */
+  @media (max-width: 899px) and (prefers-reduced-motion: no-preference) {
+    .brand-story-card.reveal {
+      transform: translateY(0.85rem);
+    }
+
+    .brand-story-card.reveal.visible {
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 899px) and (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .brand-story-card.visible:hover {
+      transform: translateY(-1px);
+    }
+  }
+
+  .brand-story-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      #c4956a 0%,
+      #a67c52 45%,
+      #8b6f47 100%
+    );
+    border-radius: 16px 16px 0 0;
+  }
+
+  .brand-story-card--tone-warm {
+    background: linear-gradient(180deg, #faf8f5 0%, #f6f2ed 100%);
+  }
+
+  @media (hover: hover) {
+    .brand-story-card.visible:hover {
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.85) inset,
+        0 20px 48px rgba(28, 23, 18, 0.08),
+        0 8px 16px rgba(28, 23, 18, 0.05);
+      transform: translateY(-2px) scale(1) rotateX(0deg);
+    }
+  }
+
+  .brand-story-card__content {
+    padding: 1.5rem 1.35rem 1.65rem;
+    padding-top: 1.35rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-width: 0;
+  }
+
+  .brand-story-card__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.08rem, 1.4vw, 1.42rem);
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.22;
+    letter-spacing: -0.025em;
+    margin: 0;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid rgba(28, 23, 18, 0.08);
+  }
+
+  .brand-story-card__title--one-line {
+    white-space: nowrap;
+    font-size: clamp(0.95rem, 1.15vw, 1.28rem);
+  }
+
+  .brand-story-card__title--tagline {
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(1rem, 1.35vw, 1.2rem);
+    letter-spacing: -0.015em;
+    line-height: 1.35;
+  }
+
+  .brand-story-card__parts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .brand-story-card__parts > .brand-story-card__h3:first-child {
+    margin-top: 0;
+  }
+
+  .brand-story-card__p {
+    font-family: var(--font-body);
+    font-size: 0.84rem;
+    font-weight: 300;
+    color: var(--ink-soft);
+    line-height: 1.68;
+    margin: 0;
+  }
+
+  .brand-story-card__p--lead {
+    font-size: 0.9rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+  }
+
+  .brand-story-card__p--emphasis {
+    color: #0a0908;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 0.22em;
+    text-decoration-thickness: 0.1em;
+    text-decoration-color: #0a0908;
+  }
+
+  .brand-story-card__h3 {
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8b6f47;
+    margin: 0.5rem 0 0;
+  }
+
+  .brand-story-card__stack3 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    margin-top: 0.15rem;
+    flex: 0 1 auto;
+  }
+
+  .brand-story-card__stack3-top {
+    display: inline-flex;
+    align-items: center;
+    align-self: center;
+    gap: 0.4rem;
+    width: fit-content;
+    max-width: 100%;
+    padding: 0.32rem 0.65rem;
+    border-radius: 999px;
+    background: rgba(196, 149, 106, 0.11);
+    border: 1px solid rgba(166, 124, 82, 0.28);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset;
+  }
+
+  .brand-story-card__stack3-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.55rem;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .brand-story-card__stack3-cell {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.45rem;
+    padding: 0.5rem 0.62rem;
+    border-radius: 10px;
+    border: 1px solid rgba(28, 23, 18, 0.1);
+    background: rgba(255, 255, 255, 0.55);
+    box-sizing: border-box;
+    min-height: 2.85rem;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.75) inset;
+  }
+
+  .brand-story-card--tone-warm .brand-story-card__stack3-cell {
+    background: rgba(255, 255, 255, 0.35);
+  }
+
+  .brand-story-card__stack3-text {
+    font-family: var(--font-body);
+    font-weight: 300;
+    color: var(--ink-soft);
+  }
+
+  .brand-story-card__stack3-top .brand-story-card__stack3-text {
+    font-size: 0.68rem;
+    line-height: 1.35;
+    font-weight: 500;
+  }
+
+  .brand-story-card__stack3-top .brand-story-card__arrow {
+    margin-top: 0;
+    font-size: 0.75rem;
+  }
+
+  .brand-story-card__stack3-cell .brand-story-card__stack3-text {
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+
+  .brand-story-card--vision-stack {
+    height: auto;
+  }
+
+  .brand-story-card--vision-stack .brand-story-card__content {
+    flex: 0 1 auto;
+  }
+
+  .brand-story-card--vision-stack .brand-story-card__parts {
+    flex: 0 1 auto;
+    min-height: 0;
+  }
+
+  @media (max-width: 520px) {
+    .brand-story-card__stack3-row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .brand-story-card__ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .brand-story-card__li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(28, 23, 18, 0.06);
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  .brand-story-card__li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .brand-story-card__arrow {
+    color: #a67c52;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  @media (max-width: 899px) {
+    .brand-story-card__title--one-line {
+      white-space: normal;
+    }
+  }
+</style>
