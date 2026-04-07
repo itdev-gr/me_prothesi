@@ -1,0 +1,38 @@
+---
+const tags = ["Ήσυχο", "Καθαρό", "Σοβαρό αλλά όχι βαρύ", "Γήινο", "Στοχαστικό", "Δομημένο"];
+const pillars = [
+  { title: "Δεν φωνάζει", body: "Μιλάει ήσυχα. Δεν χρειάζεται να πείσει. Απλώς είναι εκεί." },
+  { title: "Δεν υπόσχεται μεταμόρφωση", body: "Προσφέρει χώρο. Η αλλαγή είναι δική σου." },
+  { title: "Δεν πιέζει", body: "Ο ρυθμός είναι δικός σου. Δεν υπάρχει σωστό ή λάθος." },
+];
+---
+<section class="section-06" id="xarakthras-brand" aria-labelledby="section-06-title">
+  <div class="container">
+    <header class="section-06__header">
+      <h2 id="section-06-title" class="section-06__title section-heading">
+        <span class="section-number">06</span>
+        Ο χαρακτήρας <strong>του</strong> brand.
+      </h2>
+      <p class="section-06__lede">Λέξεις που περιγράφουν τον τόνο· από κάτω, τρεις αρχές λειτουργίας.</p>
+    </header>
+
+    <ul class="section-06__traits" aria-label="Χαρακτηριστικά τόνου">
+      {tags.map((tag) => (
+        <li class="section-06__trait-item">
+          <span class="section-06__trait">{tag}</span>
+        </li>
+      ))}
+    </ul>
+
+    <div class="section-06__pillar-wrap">
+      <div class="section-06__pillars">
+        {pillars.map((p) => (
+          <article class="section-06__pillar">
+            <h3 class="section-06__pillar-title">{p.title}</h3>
+            <p class="section-06__pillar-body">{p.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

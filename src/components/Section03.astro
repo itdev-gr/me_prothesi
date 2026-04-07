@@ -1,0 +1,179 @@
+---
+const slides = [
+  {
+    src: "/images/pause-carousel/slide-1.png",
+    alt: "Pause Mode — Μικρές παύσεις για πιο συνειδητή εργασία.",
+  },
+  {
+    src: "/images/pause-carousel/slide-2.png",
+    alt: "Κάρτα με κείμενο για την αυτόματη λειτουργία στην εργασία και τις στιγμές παύσης.",
+  },
+  {
+    src: "/images/pause-carousel/slide-3.png",
+    alt: "Γιατί υπάρχει αυτό το Box — σκοπός του Pause Mode και των καρτών επίγνωσης.",
+  },
+];
+const slideCount = slides.length;
+/** Ανανέωση όταν αλλάζουν τα αρχεία στο public — ξεγελάει aggressive cache */
+const carouselAssetV = "20250326c";
+---
+<section class="section-03" id="pause-mode" aria-labelledby="section-03-title">
+  <div class="container">
+    <h2 id="section-03-title" class="section-heading" style="margin-bottom: 3rem;">
+      <span class="section-number">03</span>
+      Box: Pause Mode
+    </h2>
+
+    <div class="section-03__layout">
+      <div class="section-03__carousel-wrap">
+        <div
+          class="section-03__carousel"
+          id="pause-mode-carousel"
+          role="region"
+          aria-roledescription="καρουζέλ"
+          aria-label="Εικόνες Pause Mode"
+          tabindex="0"
+          data-slide-count={slideCount}
+        >
+          <div class="section-03__carousel-viewport">
+            <div class="section-03__carousel-track" data-carousel-track>
+              {slides.map((slide, idx) => (
+                <figure class="section-03__slide">
+                  <img
+                    src={`${slide.src}?v=${carouselAssetV}`}
+                    alt={slide.alt}
+                    loading={idx === 0 ? "eager" : "lazy"}
+                    fetchpriority={idx === 0 ? "high" : undefined}
+                    decoding="async"
+                  />
+                </figure>
+              ))}
+            </div>
+          </div>
+          <div class="section-03__carousel-nav">
+            <button
+              type="button"
+              class="section-03__carousel-btn"
+              data-carousel-prev
+              aria-label="Προηγούμενη εικόνα"
+            >
+              ‹
+            </button>
+            <div class="section-03__carousel-dots" role="group" aria-label="Επιλογή διαφάνειας">
+              {slides.map((_, i) => (
+                <button
+                  type="button"
+                  class:list={["section-03__carousel-dot", { "is-active": i === 0 }]}
+                  data-carousel-dot={i}
+                  aria-label={`Εικόνα ${i + 1} από ${slideCount}`}
+                  aria-current={i === 0 ? "true" : undefined}
+                />
+              ))}
+            </div>
+            <button
+              type="button"
+              class="section-03__carousel-btn"
+              data-carousel-next
+              aria-label="Επόμενη εικόνα"
+            >
+              ›
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-03__copy">
+        <p class="accent-italic section-03__lead">Μικρές παύσεις για πιο συνειδητή εργασία.</p>
+        <p class="section-03__body">
+          Στην καθημερινή εργασία πολλές φορές λειτουργούμε χωρίς να το καταλαβαίνουμε στον αυτόματο. Το <strong
+            >Pause Mode</strong
+          > είναι υπενθύμιση ότι η εργασία δεν χρειάζεται πάντα περισσότερη ταχύτητα, μερικές φορές χρειάζεται μια μικρή
+          παύση.
+        </p>
+        <p class="section-03__body">
+          Οι κάρτες δημιουργούν μικρές στιγμές επίγνωσης μέσα στην εργάσιμη μέρα. Χρησιμοποίησέ τες <strong
+            >με τον δικό σου ρυθμό</strong
+          >.
+        </p>
+        <div class="section-03__callout">
+          <p>
+            Το κερί λειτουργεί ως <strong>ritual anchor</strong>, νευρολογικό σημείο έναρξης πριν από κάποια άσκηση. Όχι
+            ως διακοσμητικό αντικείμενο.
+          </p>
+        </div>
+      </div>
+
+      <aside class="section-03__panel" aria-label="Περιεχόμενα box">
+        <p class="accent-italic section-03__panel-title">Περιεχόμενα</p>
+        <ul class="section-03__panel-list">
+          <li><span class="dot" aria-hidden="true">•</span>4 Κάρτες Αφύπνισης</li>
+          <li>
+            <span class="dot" aria-hidden="true">•</span>10 Κάρτες Άσκησης (3 επίπεδα: πράσινο, κίτρινο, μπλε)
+          </li>
+          <li><span class="dot" aria-hidden="true">•</span>Αυτοκόλλητο «PAUSE.»</li>
+          <li><span class="dot" aria-hidden="true">•</span>Αυτοκόλλητο «SLOW DOWN»</li>
+          <li><span class="dot" aria-hidden="true">•</span>Κερί (ritual anchor)</li>
+          <li><span class="dot" aria-hidden="true">•</span>Συνοδευτικός οδηγός χρήσης</li>
+          <li><span class="dot" aria-hidden="true">•</span>Γιρλάντα LED (προαιρετική τοποθέτηση)</li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    var root = document.getElementById("pause-mode-carousel");
+    if (!root) return;
+    var track = root.querySelector("[data-carousel-track]");
+    var prevBtn = root.querySelector("[data-carousel-prev]");
+    var nextBtn = root.querySelector("[data-carousel-next]");
+    var dots = root.querySelectorAll("[data-carousel-dot]");
+    var n = parseInt(root.getAttribute("data-slide-count") || "0", 10) || dots.length;
+    if (!track || n < 1) return;
+
+    var i = 0;
+    var pct = 100 / n;
+
+    function apply() {
+      track.style.transform = "translateX(-" + i * pct + "%)";
+      dots.forEach(function (dot, j) {
+        dot.classList.toggle("is-active", j === i);
+        if (j === i) dot.setAttribute("aria-current", "true");
+        else dot.removeAttribute("aria-current");
+      });
+    }
+
+    function go(delta) {
+      i = (i + delta + n) % n;
+      apply();
+    }
+
+    prevBtn &&
+      prevBtn.addEventListener("click", function () {
+        go(-1);
+      });
+    nextBtn &&
+      nextBtn.addEventListener("click", function () {
+        go(1);
+      });
+    dots.forEach(function (dot, j) {
+      dot.addEventListener("click", function () {
+        i = j;
+        apply();
+      });
+    });
+
+    root.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        go(-1);
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        go(1);
+      }
+    });
+
+    apply();
+  })();
+</script>

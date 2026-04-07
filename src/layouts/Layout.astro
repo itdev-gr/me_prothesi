@@ -1,0 +1,126 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="el">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" href="/images/logo.png" type="image/png" sizes="512x512" />
+    <link rel="icon" href="/images/logo.png" type="image/png" sizes="192x192" />
+    <link rel="icon" href="/images/logo.png" type="image/png" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/images/logo.png" sizes="512x512" />
+    <link rel="apple-touch-icon" href="/images/logo.png" sizes="180x180" />
+    <meta name="msapplication-TileImage" content="/images/logo.png" />
+    <meta name="theme-color" content="#f7f3ee" />
+    <slot name="head" />
+    <style>
+      @media (max-width: 768px) {
+        nav {
+          padding: 0.15rem 1.1rem !important;
+        }
+        nav div:last-child {
+          display: none !important;
+        }
+
+        section:not(.site-hero) {
+          padding: max(4.75rem, calc(env(safe-area-inset-top, 0px) + 3.5rem))
+            1.25rem 4rem !important;
+        }
+
+        section:not(.site-hero) h1 {
+          font-size: 2.5rem !important;
+        }
+        section:not(.brand-story-chapter) h2 {
+          font-size: 2rem !important;
+        }
+
+      }
+    </style>
+  </head>
+  <body>
+    <nav
+      class="site-nav"
+      style="
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.15rem 2rem;
+  background: transparent;
+  transition: background 0.3s ease;
+  overflow: visible;
+"
+      id="navbar"
+    >
+      <a href="/" class="site-nav__brand" aria-label="Με Πρόθεση — αρχική">
+        <img
+          class="site-nav__logo"
+          src="/images/logo.png"
+          alt=""
+          width="200"
+          height="200"
+          decoding="async"
+        />
+      </a>
+
+      <a
+        class="site-nav__instagram"
+        href="https://www.instagram.com/meprothesi/"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #fff;
+        background: rgba(28, 23, 18, 0.82);
+        padding: 0.4rem 0.85rem;
+        border-radius: 100px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      ">Instagram</a
+      >
+    </nav>
+
+    <main><slot /></main>
+
+    <script>
+      const navbar = document.getElementById('navbar');
+      if (navbar) {
+        window.addEventListener('scroll', () => {
+          navbar.style.background =
+            window.scrollY > 50 ? 'rgba(255,255,255,0.95)' : 'transparent';
+          navbar.style.backdropFilter = window.scrollY > 50 ? 'blur(10px)' : 'none';
+          navbar.style.boxShadow =
+            window.scrollY > 50 ? '0 2px 20px rgba(0,0,0,0.08)' : 'none';
+        });
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const el = entry.target;
+              const delay = Number((el as HTMLElement).dataset.delay) || 0;
+              setTimeout(() => {
+                el.classList.add('visible');
+              }, delay);
+              observer.unobserve(el);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>

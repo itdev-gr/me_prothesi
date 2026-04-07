@@ -1,0 +1,203 @@
+---
+import type { BrandStorySectionData } from '../data/brandStory';
+import BrandStorySectionCard from './BrandStorySectionCard.astro';
+
+interface Props {
+  sections: BrandStorySectionData[];
+  /** Διαχωριστική γραμμή κάτω (false στην τελευταία σειρά του κεφαλαίου) */
+  showBottomDivider?: boolean;
+  /** ms βάση για stagger μεταξύ σειρών στο ίδιο κεφάλαιο */
+  staggerOffset?: number;
+}
+
+const { sections, staggerOffset = 0 } = Astro.props;
+
+const rowCount = sections.length;
+const gridMod =
+  rowCount === 1
+    ? 'brand-story-cards-row__grid--n1'
+    : rowCount === 2
+      ? 'brand-story-cards-row__grid--n2'
+      : 'brand-story-cards-row__grid--n3';
+
+/** GTM αριστερά · δεξιά: Όραμα πάνω, Οπτική ταυτότητα + Tagline κάτω */
+const isMarketAsideBento =
+  sections.length === 4 &&
+  sections[0].sectionId === 'section-12' &&
+  sections[1].sectionId === 'section-13' &&
+  sections[2].sectionId === 'section-10' &&
+  sections[3].sectionId === 'section-11';
+---
+
+<div class="brand-story-cards-row">
+  <div class="brand-story-cards-row__inner">
+    {
+      isMarketAsideBento ? (
+        <div class="brand-story-market-split">
+          <div class="brand-story-market-split__gtm">
+            <BrandStorySectionCard
+              section={sections[0]}
+              enterDelay={staggerOffset}
+            />
+          </div>
+          <div class="brand-story-market-split__right">
+            <div class="brand-story-market-split__vision">
+              <BrandStorySectionCard
+                section={sections[1]}
+                enterDelay={staggerOffset + 95}
+              />
+            </div>
+            <div class="brand-story-market-split__identity">
+              <BrandStorySectionCard
+                section={sections[2]}
+                enterDelay={staggerOffset + 190}
+              />
+              <BrandStorySectionCard
+                section={sections[3]}
+                enterDelay={staggerOffset + 285}
+              />
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div class:list={['brand-story-cards-row__grid', gridMod]}>
+          {sections.map((section, cardIndex) => (
+            <BrandStorySectionCard
+              section={section}
+              enterDelay={staggerOffset + cardIndex * 95}
+            />
+          ))}
+        </div>
+      )
+    }
+  </div>
+</div>
+
+<style>
+  .brand-story-cards-row {
+    padding: 1.35rem 0 2.25rem;
+    border-bottom: 1px solid rgba(28, 23, 18, 0.08);
+  }
+
+  .brand-story-cards-row--no-divider {
+    border-bottom: none;
+    padding-bottom: 2rem;
+  }
+
+  .brand-story-cards-row__inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 5rem;
+    box-sizing: border-box;
+  }
+
+  .brand-story-market-split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+    perspective: 1400px;
+    transform-style: preserve-3d;
+  }
+
+  .brand-story-market-split__gtm {
+    display: flex;
+    align-items: stretch;
+    min-width: 0;
+  }
+
+  .brand-story-market-split__gtm > :global(article) {
+    flex: 1;
+    width: 100%;
+    min-height: 100%;
+  }
+
+  .brand-story-market-split__right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    min-width: 0;
+  }
+
+  .brand-story-market-split__vision {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .brand-story-market-split__vision > :global(article) {
+    width: 100%;
+    max-width: min(26rem, 100%);
+  }
+
+  .brand-story-market-split__identity {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  @media (min-width: 900px) {
+    .brand-story-market-split {
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .brand-story-market-split__identity {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .brand-story-cards-row__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    align-items: stretch;
+    perspective: 1400px;
+    transform-style: preserve-3d;
+  }
+
+  @media (min-width: 900px) {
+    .brand-story-cards-row__grid--n1 {
+      grid-template-columns: 1fr;
+      grid-auto-rows: 1fr;
+      max-width: min(100%, 520px);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .brand-story-cards-row__grid--n2 {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 1fr;
+      gap: 1.5rem;
+    }
+
+    .brand-story-cards-row__grid--n2 :global(.brand-story-card--vision-stack) {
+      align-self: start;
+      height: auto;
+    }
+
+    .brand-story-cards-row__grid--n3 {
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  @media (max-width: 899px) {
+    .brand-story-cards-row__grid,
+    .brand-story-market-split {
+      perspective: none;
+      transform-style: flat;
+    }
+
+    .brand-story-cards-row__inner {
+      padding: 0 1.5rem;
+    }
+
+    .brand-story-cards-row {
+      padding: 1.5rem 0 2rem;
+    }
+  }
+</style>
