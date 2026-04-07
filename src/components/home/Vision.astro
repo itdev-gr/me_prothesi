@@ -1,0 +1,46 @@
+---
+const personalThemes = ['εργασία', 'μετάβαση', 'αυτοφροντίδα', 'έναρξη', 'ενίσχυση θετικών συναισθημάτων'];
+const corporateThemes = ['Burnout Prevention', 'Self-Leadership', 'Emotional Literacy', 'Boundary Setting'];
+---
+
+<section class="vision-section bg-white py-12 md:py-16">
+  <div class="mx-auto max-w-content px-6 md:px-12 lg:px-20">
+    <h2 class="vision-heading font-serif text-[2.125rem] md:text-[2.375rem] font-medium text-burgundy text-center mb-4">Το όραμα της σειράς</h2>
+    <p class="text-brand-body text-base md:text-lg text-center mb-8 max-w-2xl mx-auto leading-relaxed">
+      Η σειρά Με Πρόθεση συνεχίζει να εξελίσσεται με νέα θεματικά boxes που υποστηρίζουν διαφορετικές στιγμές της ζωής:
+    </p>
+    <div class="vision-tags flex flex-wrap justify-center gap-3 md:gap-4 max-w-2xl mx-auto mb-8">
+      {personalThemes.map((theme) => (
+        <span class="vision-tag inline-block bg-off-white border border-burgundy/10 text-brand-dark font-semibold text-sm md:text-base px-5 py-2.5 rounded-pill">{theme}</span>
+      ))}
+    </div>
+    <p class="text-brand-body text-base md:text-lg text-center max-w-xl mx-auto leading-relaxed mb-12">
+      ώστε ο καθένας να μπορεί να βρίσκει το σημείο που τον αφορά.
+    </p>
+    <div class="vision-corporate bg-blush rounded-2xl p-6 md:p-8 max-w-3xl mx-auto">
+      <h3 class="font-sans font-bold text-sage text-xs uppercase tracking-widest mb-2 text-center">Corporate Extension</h3>
+      <p class="font-serif italic text-burgundy text-lg md:text-xl text-center mb-5">
+        Structured Reflection Tools for Employee Wellbeing
+      </p>
+      <div class="flex flex-wrap justify-center gap-2 md:gap-3 mb-5">
+        {corporateThemes.map((theme) => (
+          <span class="vision-corp-tag inline-block bg-white border border-sage/20 text-sage font-medium text-xs md:text-sm px-4 py-2 rounded-pill">{theme}</span>
+        ))}
+      </div>
+      <p class="text-brand-body/70 text-sm text-center">
+        Focus sessions · Transition rituals · Team reflection tools
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+  document.addEventListener('DOMContentLoaded', () => {
+    gsap.from('.vision-heading', { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: '.vision-section', start: 'top 75%' } });
+    gsap.from('.vision-tag', { scale: 0.8, opacity: 0, stagger: 0.1, duration: 0.5, ease: 'back.out(1.4)', scrollTrigger: { trigger: '.vision-tags', start: 'top 85%' } });
+    gsap.from('.vision-corporate', { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: '.vision-corporate', start: 'top 85%' } });
+  });
+</script>

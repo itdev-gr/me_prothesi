@@ -1,0 +1,85 @@
+---
+---
+
+<section id="home" class="hero-section relative bg-white overflow-hidden">
+  <div class="absolute inset-0 flex items-end justify-center pointer-events-none select-none overflow-hidden">
+    <span class="text-[6rem] md:text-[10rem] lg:text-[14rem] font-black text-burgundy/[0.03] leading-none tracking-tight whitespace-nowrap -mb-10 md:-mb-16">
+      ΜΕ ΠΡΟΘΕΣΗ
+    </span>
+  </div>
+  <div class="relative mx-auto max-w-content px-6 md:px-12 lg:px-20 py-14 md:py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div>
+        <p class="hero-tagline text-burgundy font-sans font-bold text-base md:text-lg tracking-wide uppercase mb-4">
+          Χώρος να ξεκινήσεις αλλιώς
+        </p>
+        <h1 class="hero-heading font-serif text-[2.5rem] md:text-[2.75rem] font-semibold text-brand-dark leading-[1.2] mb-6">
+          Γιατί η αλλαγή ξεκινάει με Πρόθεση
+        </h1>
+        <p class="hero-paragraph text-brand-body text-base md:text-lg leading-relaxed mb-4">
+          Το "Με Πρόθεση" είναι μια δομημένη εμπειρία μικρών καθημερινών βημάτων προς την αλλαγή.
+        </p>
+        <p class="hero-paragraph-2 text-brand-body text-base md:text-lg leading-relaxed mb-4">
+          Κάθε box δημιουργεί μια σύντομη προσωπική συνάντηση με τον εαυτό σου, ώστε να δημιουργείται χώρος για να κινηθείς προς αυτό που έχει σημασία για εσένα.
+        </p>
+        <p class="hero-paragraph-3 text-brand-body text-base md:text-lg leading-relaxed font-serif italic mb-6">
+          Το "Με Πρόθεση" είναι ο δικός σου "χώρος" να ξεκινήσεις αλλιώς.
+        </p>
+        <div class="hero-clarification border-l-3 border-sage pl-5 mb-8 py-2" style="border-left-width: 3px;">
+          <p class="text-brand-body/70 text-sm md:text-base leading-relaxed">
+            Δεν είναι brand με φράσεις. Δεν είναι motivational προϊόν.<br/>
+            <span class="font-semibold text-brand-body">Είναι δομημένες, μικρές ψυχοεκπαιδευτικές εμπειρίες σε μορφή τελετουργίας για την καθημερινότητα.</span>
+          </p>
+        </div>
+        <a href="#boxes" class="hero-cta inline-block bg-burgundy text-white font-medium text-base uppercase rounded-pill px-8 py-3 hover:bg-burgundy-dark transition-colors duration-300">
+          ΑΝΑΚΑΛΥΨΕ ΤΑ BOXES
+        </a>
+      </div>
+      <div class="hero-tv flex justify-center lg:justify-end relative">
+        <div class="relative w-[320px] md:w-[400px] lg:w-[440px]">
+          <!-- TV SVG -->
+          <svg viewBox="0 0 440 300" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+            <!-- TV outer shell -->
+            <rect x="40" y="30" width="340" height="260" rx="30" fill="#76150C"/>
+            <!-- TV screen -->
+            <rect x="60" y="50" width="300" height="220" rx="16" fill="#FCEEED"/>
+            <!-- TV antenna -->
+            <line x1="175" y1="30" x2="220" y2="2" stroke="#76150C" stroke-width="4" stroke-linecap="round"/>
+            <line x1="265" y1="30" x2="220" y2="2" stroke="#76150C" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="220" cy="2" r="5" fill="#76150C"/>
+          </svg>
+
+          <!-- Text inside TV screen -->
+          <div class="absolute top-[14%] left-[16%] right-[14%] bottom-[10%] flex items-center justify-center">
+            <div class="text-center px-4">
+              <p class="font-serif italic text-burgundy text-sm md:text-base lg:text-lg leading-snug">
+                Η αλλαγή<br/>
+                δεν ξεκινά<br/>
+                εξωτερικά.<br/>
+                Ξεκινά εσωτερικά
+              </p>
+              <span class="inline-block mt-3 bg-burgundy text-white font-bold text-[10px] md:text-xs px-3 py-1 -rotate-3 transform rounded">
+                Με Πρόθεση.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  document.addEventListener('DOMContentLoaded', () => {
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    tl.from('.hero-tagline', { y: -20, opacity: 0, duration: 0.6 })
+      .from('.hero-heading', { x: -50, opacity: 0, duration: 1 }, '-=0.3')
+      .from('.hero-paragraph', { y: 25, opacity: 0, duration: 0.8 }, '-=0.5')
+      .from('.hero-paragraph-2', { y: 25, opacity: 0, duration: 0.8 }, '-=0.5')
+      .from('.hero-paragraph-3', { y: 25, opacity: 0, duration: 0.8 }, '-=0.5')
+      .from('.hero-clarification', { y: 20, opacity: 0, duration: 0.7 }, '-=0.4')
+      .from('.hero-cta', { y: 25, opacity: 0, duration: 0.8 }, '-=0.4')
+      .from('.hero-tv', { x: 80, scale: 0.85, opacity: 0, duration: 1.2 }, '-=1.2');
+  });
+</script>

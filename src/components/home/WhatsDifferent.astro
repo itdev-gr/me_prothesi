@@ -1,0 +1,53 @@
+---
+---
+
+<section class="whatsdiff-section bg-off-white py-12 md:py-16">
+  <div class="mx-auto max-w-content px-6 md:px-12 lg:px-20">
+    <h2 class="whatsdiff-heading font-serif text-[2.125rem] md:text-[2.375rem] font-medium text-burgundy text-center mb-10">Τι κάνει τη σειρά διαφορετική</h2>
+    <div class="whatsdiff-split grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
+      <div class="bg-white rounded-2xl p-6 md:p-8 border border-burgundy/10">
+        <h3 class="font-sans font-bold text-burgundy/40 text-xs uppercase tracking-widest mb-4">Δεν είναι</h3>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3">
+            <svg class="w-4 h-4 text-burgundy/30 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+            <span class="text-brand-body/60 text-base">brand με φράσεις</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-4 h-4 text-burgundy/30 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+            <span class="text-brand-body/60 text-base">motivational προϊόν</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-4 h-4 text-burgundy/30 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+            <span class="text-brand-body/60 text-base">διακοσμητικό ritual object</span>
+          </li>
+        </ul>
+      </div>
+      <div class="bg-blush rounded-2xl p-6 md:p-8 border border-burgundy/10">
+        <h3 class="font-sans font-bold text-sage text-xs uppercase tracking-widest mb-4">Είναι</h3>
+        <p class="text-brand-body text-base md:text-lg leading-relaxed font-medium">
+          Δομημένες, μικρές ψυχοεκπαιδευτικές εμπειρίες σε μορφή τελετουργίας για την καθημερινότητα.
+        </p>
+        <p class="text-sage text-sm mt-3 italic">
+          Κάθε box συνδυάζει: άσκηση · επίγνωση · τελετουργία
+        </p>
+      </div>
+    </div>
+    <div class="whatsdiff-body text-center space-y-5 max-w-narrow mx-auto">
+      <p class="text-brand-body text-lg md:text-xl leading-relaxed">Κάθε box είναι μια σύντομη εμπειρία εφαρμογής.</p>
+      <p class="font-serif italic text-burgundy text-xl md:text-2xl font-semibold">Όχι θεωρία.</p>
+      <p class="font-serif italic text-burgundy text-xl md:text-2xl font-semibold">Όχι πίεση για αλλαγή.</p>
+      <p class="text-brand-body text-lg md:text-xl leading-relaxed">Αλλά μια πρακτική καθημερινής επαναφοράς της προσοχής και της πρόθεσης.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+  document.addEventListener('DOMContentLoaded', () => {
+    gsap.from('.whatsdiff-heading', { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: '.whatsdiff-section', start: 'top 75%' } });
+    gsap.from('.whatsdiff-split > div', { y: 30, opacity: 0, stagger: 0.2, duration: 0.7, ease: 'power3.out', scrollTrigger: { trigger: '.whatsdiff-split', start: 'top 80%' } });
+    gsap.from('.whatsdiff-body > p', { y: 20, opacity: 0, stagger: 0.15, duration: 0.6, ease: 'power3.out', scrollTrigger: { trigger: '.whatsdiff-body', start: 'top 80%' } });
+  });
+</script>

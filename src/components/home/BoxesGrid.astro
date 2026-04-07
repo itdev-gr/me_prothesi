@@ -1,0 +1,50 @@
+---
+const details = [
+  '3 κάρτες αφύπνισης',
+  '6 κάρτες άσκησης',
+  '2 αυτοκόλλητα: «Με Πρόθεση» / «Όχι με Φόβο»',
+  'Κερί με μήνυμα "Ξεκινάω"',
+];
+---
+
+<section id="boxes" class="boxes-section bg-white py-12 md:py-16">
+  <div class="mx-auto max-w-content px-6 md:px-12 lg:px-20">
+    <h2 class="boxes-heading font-serif text-[2.125rem] md:text-[2.375rem] font-medium text-burgundy text-center mb-4">Το πρώτο Box της σειράς</h2>
+    <p class="text-brand-body text-base md:text-lg text-center mb-12 max-w-2xl mx-auto">
+      Το πρώτο box είναι εδώ. Τα επόμενα έρχονται σύντομα.
+    </p>
+    <div class="box-card max-w-3xl mx-auto bg-off-white rounded-2xl p-8 md:p-12 border border-transparent hover:border-burgundy/20 hover:shadow-xl transition-all duration-300">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <div>
+          <p class="text-burgundy font-sans font-bold text-xs uppercase tracking-widest mb-3">Box 01</p>
+          <h3 class="font-serif text-2xl md:text-3xl font-semibold text-brand-dark mb-2">Ξεκινάω</h3>
+          <p class="text-burgundy font-sans font-semibold text-base mb-4">Δράση χωρίς τελειότητα</p>
+          <p class="text-brand-body font-sans text-base leading-relaxed">
+            Να βοηθήσει το άτομο να κινηθεί χωρίς να περιμένει να νιώσει έτοιμο. Υποστηρίζει μικρές πράξεις έναρξης όταν η αναμονή της τελειότητας καθυστερεί το επόμενο βήμα.
+          </p>
+        </div>
+        <div class="bg-blush rounded-xl p-6">
+          <p class="text-sage text-xs font-semibold uppercase tracking-wide mb-4">Περιεχόμενο:</p>
+          <ul class="space-y-3">
+            {details.map((detail) => (
+              <li class="text-brand-body text-sm md:text-base flex items-center gap-3">
+                <span class="w-2 h-2 rounded-full bg-burgundy flex-shrink-0"></span>
+                {detail}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+  document.addEventListener('DOMContentLoaded', () => {
+    gsap.from('.boxes-heading', { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: '.boxes-section', start: 'top 75%' } });
+    gsap.from('.box-card', { y: 50, opacity: 0, scale: 0.95, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: '.box-card', start: 'top 80%' } });
+  });
+</script>

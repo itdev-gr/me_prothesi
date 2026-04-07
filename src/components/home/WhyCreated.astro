@@ -1,0 +1,38 @@
+---
+---
+
+<section class="whycreated-section bg-blush py-12 md:py-16">
+  <div class="mx-auto max-w-narrow px-6 md:px-12 text-center">
+    <h2 class="whycreated-heading font-serif text-[1.75rem] md:text-[2rem] font-semibold text-burgundy mb-8">Γιατί δημιουργήθηκε η σειρά</h2>
+    <div class="whycreated-body space-y-4">
+      <p class="text-brand-body text-base md:text-lg leading-relaxed">
+        Στην καθημερινότητα πολλές αλλαγές δεν ξεκινούν επειδή δεν υπάρχει χρόνος για μεγάλες αποφάσεις.
+      </p>
+      <p class="font-serif italic text-burgundy text-xl md:text-2xl leading-relaxed font-semibold">Χρειάζονται μικρές στιγμές στάσης.</p>
+      <p class="font-serif italic text-burgundy text-xl md:text-2xl leading-relaxed font-semibold">Χώρος για παρατήρηση.</p>
+      <p class="font-serif italic text-burgundy text-xl md:text-2xl leading-relaxed font-semibold">Και μια ήρεμη αρχή.</p>
+      <div class="pt-4 space-y-3">
+        <p class="text-brand-dark font-semibold text-base md:text-lg">
+          Η αλλαγή δεν ξεκινά εξωτερικά. Ξεκινά εσωτερικά – <span class="font-serif italic">Με Πρόθεση.</span>
+        </p>
+        <p class="text-brand-body/80 text-base md:text-lg">
+          Το box δεν είναι challenge. Είναι μια μικρή συνάντηση με εσένα.
+        </p>
+      </div>
+      <p class="text-brand-body text-base md:text-lg leading-relaxed pt-4">
+        Τα boxes Με Πρόθεση δημιουργήθηκαν για να υποστηρίζουν αυτές τις μικρές αρχές.
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+  document.addEventListener('DOMContentLoaded', () => {
+    const tl = gsap.timeline({ scrollTrigger: { trigger: '.whycreated-section', start: 'top 75%' } });
+    tl.from('.whycreated-heading', { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out' })
+      .from('.whycreated-body > *', { y: 20, opacity: 0, stagger: 0.12, duration: 0.6, ease: 'power3.out' }, '-=0.4');
+  });
+</script>

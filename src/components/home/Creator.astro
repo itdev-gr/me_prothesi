@@ -1,0 +1,23 @@
+---
+---
+
+<section id="creator" class="creator-section bg-white py-10 md:py-16">
+  <div class="mx-auto max-w-content px-6 md:px-12 lg:px-20">
+    <div class="creator-content border-l-4 border-burgundy pl-6 md:pl-10 max-w-3xl mx-auto">
+      <h2 class="font-serif text-[2.125rem] font-semibold text-brand-dark mb-1">Ιωάννα Π. Ντίμοβα</h2>
+      <h3 class="font-serif text-lg font-semibold text-brand-dark mb-6">Δημιουργός</h3>
+      <p class="text-brand-body text-base md:text-lg leading-relaxed">
+        Η Ιωάννα Π. Ντίμοβα είναι Ψυχολόγος, απόφοιτη του ΕΚΠΑ, με εκπαίδευση στην Ψυχαναλυτική-Ψυχοδυναμική Ψυχοθεραπεία και πρακτική εμπειρία με παιδιά και εφήβους στο Αιγινήτειο Νοσοκομείο. Έχει παρακολουθήσει επιμορφωτικά σεμινάρια, έχει συμμετάσχει σε συνέδρια και ποιοτικές έρευνες, που ενισχύουν την επιστημονική της κατάρτιση. Η ανάγκη της να προάγει την προσωπική εξέλιξη και τη συναισθηματική νοημοσύνη, σε συνδυασμό με την αγάπη της για τη συνειδητή ζωή, την οδήγησε στη δημιουργία του "Με Πρόθεση" — ένα δημιουργικό project που σχεδιάζει δομημένες, μικρές ψυχοεκπαιδευτικές εμπειρίες σε μορφή τελετουργίας για την καθημερινότητα, ώστε η αλλαγή να ξεκινά από μέσα, με συνειδητή επιλογή και όχι με πίεση.
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+  document.addEventListener('DOMContentLoaded', () => {
+    gsap.from('.creator-content', { x: -40, opacity: 0, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: '.creator-section', start: 'top 75%' } });
+  });
+</script>

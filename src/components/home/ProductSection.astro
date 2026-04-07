@@ -1,0 +1,155 @@
+---
+const benefits = [
+  { title: 'Εξατομικευμένο', desc: 'Ξεχωριστό εργαλείο αυτοπαρατήρησης' },
+  { title: 'Συναισθηματική εστίαση', desc: 'Εστιάζει στα συναισθήματα και την αυτογνωσία' },
+  { title: 'Επιστημονική βάση', desc: 'Εγκεκριμένο από ειδικούς της ψυχολογίας' },
+  { title: 'Βαθύτερη κατανόηση', desc: 'Σας βοηθά να εκφράσετε τις βαθύτερες σκέψεις σας' },
+  { title: 'Ευέλικτη χρήση', desc: 'Ιδανικό για προσωπική χρήση ή υποστήριξη στη θεραπεία' },
+  { title: 'Δημιουργική εμπειρία', desc: 'Μοναδικό, διαδραστικό και ευχάριστο στη χρήση' },
+  { title: 'Σύμμαχος εξέλιξης', desc: 'Στην ανακάλυψη του εαυτού σας και στην προσωπική σας εξέλιξη' },
+];
+const totalImages = 23;
+---
+
+<section id="product" class="product-section bg-brand-dark py-16 md:py-24">
+  <div class="mx-auto max-w-content px-6 md:px-12 lg:px-20">
+    <!-- Section Header -->
+    <h2 class="font-serif text-[2.125rem] md:text-[2.75rem] font-medium text-white text-center mb-14">
+      Γιατί να το επιλέξετε
+    </h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+      <!-- Left - Image Gallery (5 cols) -->
+      <div class="product-gallery lg:col-span-5">
+        <div class="sticky top-28">
+          <!-- Main Image -->
+          <div class="aspect-[3/4] bg-white rounded-2xl overflow-hidden shadow-2xl shadow-black/20 mb-4 max-w-sm mx-auto">
+            <img
+              id="main-product-image"
+              src="/images/home/product/product-1.jpg"
+              alt="Με Πρόθεση - Κάρτα"
+              class="w-full h-full object-contain transition-opacity duration-500"
+            />
+          </div>
+          <!-- Navigation -->
+          <div class="flex items-center justify-center gap-4 mb-4">
+            <button id="gallery-prev" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <span id="gallery-counter" class="text-white/50 text-sm font-medium tabular-nums">1 / 23</span>
+            <button id="gallery-next" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+          <!-- Thumbnails -->
+          <div class="overflow-x-auto pb-2 scrollbar-hide">
+            <div class="flex gap-2 justify-center min-w-max px-4">
+              {Array.from({length: totalImages}, (_, i) => i + 1).map((i) => (
+                <button
+                  class:list={["product-thumb w-12 h-16 flex-shrink-0 rounded-lg overflow-hidden border-2 transition-all duration-200 focus:outline-none", i === 1 ? "border-blush opacity-100" : "border-transparent opacity-50 hover:opacity-80"]}
+                  data-src={`/images/home/product/product-${i}.jpg`}
+                  data-index={i}
+                >
+                  <img
+                    src={`/images/home/product/product-${i}.jpg`}
+                    alt={`Κάρτα ${i}`}
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right - Benefits (7 cols) -->
+      <div class="product-details lg:col-span-7">
+        <div class="benefits-list grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {benefits.map((benefit) => (
+            <div class="benefit-item bg-white/[0.06] backdrop-blur-sm rounded-xl p-5 border border-white/[0.08] hover:bg-white/[0.10] transition-colors duration-300">
+              <div class="flex items-start gap-3 mb-2">
+                <svg class="w-5 h-5 text-blush flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <h4 class="text-white font-semibold text-base">{benefit.title}</h4>
+              </div>
+              <p class="text-white/60 text-sm leading-relaxed pl-8">{benefit.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <!-- Bottom tagline -->
+        <div class="mt-8 text-center lg:text-left">
+          <p class="font-serif italic text-blush/80 text-lg">
+            Κάθε κάρτα είναι μια μικρή πρόσκληση για αυτοπαρατήρηση.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const mainImg = document.getElementById('main-product-image') as HTMLImageElement;
+    const thumbs = document.querySelectorAll('.product-thumb');
+    const counter = document.getElementById('gallery-counter')!;
+    const prevBtn = document.getElementById('gallery-prev')!;
+    const nextBtn = document.getElementById('gallery-next')!;
+    const total = 23;
+    let current = 1;
+
+    function goTo(index: number) {
+      if (index < 1) index = total;
+      if (index > total) index = 1;
+      current = index;
+      const src = `/images/home/product/product-${current}.jpg`;
+      gsap.to(mainImg, {
+        opacity: 0, duration: 0.15,
+        onComplete: () => {
+          mainImg.src = src;
+          mainImg.onload = () => gsap.to(mainImg, { opacity: 1, duration: 0.2 });
+        },
+      });
+      counter.textContent = `${current} / ${total}`;
+      thumbs.forEach((t) => {
+        const idx = Number(t.getAttribute('data-index'));
+        if (idx === current) {
+          t.classList.add('border-blush', 'opacity-100');
+          t.classList.remove('border-transparent', 'opacity-50');
+        } else {
+          t.classList.remove('border-blush', 'opacity-100');
+          t.classList.add('border-transparent', 'opacity-50');
+        }
+      });
+      const activeThumb = document.querySelector(`.product-thumb[data-index="${current}"]`);
+      activeThumb?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+    thumbs.forEach((thumb) => {
+      thumb.addEventListener('click', () => goTo(Number(thumb.getAttribute('data-index'))));
+    });
+
+    // Animations
+    gsap.from('.product-gallery', {
+      y: 40, opacity: 0, duration: 0.8, ease: 'power3.out',
+      scrollTrigger: { trigger: '.product-section', start: 'top 70%' },
+    });
+    gsap.from('.benefit-item', {
+      y: 20, opacity: 0, stagger: 0.06, duration: 0.4, ease: 'power2.out',
+      scrollTrigger: { trigger: '.benefits-list', start: 'top 80%' },
+    });
+  });
+</script>

@@ -1,0 +1,23 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import TopBar from '../components/global/TopBar.astro';
+import Header from '../components/global/Header.astro';
+import Footer from '../components/global/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const { title, description, image } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} image={image}>
+  <TopBar />
+  <Header />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+</BaseLayout>

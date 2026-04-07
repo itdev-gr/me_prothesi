@@ -1,0 +1,41 @@
+---
+const features = [
+  { title: 'Κάρτες αφύπνισης', subtitle: 'awareness triggers', icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' },
+  { title: 'Κάρτες άσκησης', subtitle: 'structured micro interventions', icon: 'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z' },
+  { title: 'Ritual Anchor (κερί)', subtitle: 'νευρολογικό σημείο έναρξης', icon: 'M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z' },
+  { title: 'Οδηγός & αυτοκόλλητα', subtitle: 'συμβολικά στοιχεία πρόθεσης', icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z' },
+];
+---
+
+<section id="how-it-works" class="howitworks-section bg-white py-12 md:py-16">
+  <div class="mx-auto max-w-content px-6 md:px-12 lg:px-20">
+    <h2 class="howitworks-heading font-serif text-[2.125rem] md:text-[2.375rem] font-medium text-burgundy text-center mb-4">Πώς λειτουργεί ένα Box</h2>
+    <p class="text-brand-body text-base md:text-lg text-center mb-12 max-w-2xl mx-auto">Κάθε εμπειρία περιλαμβάνει:</p>
+    <div class="howitworks-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+      {features.map((feature) => (
+        <div class="howitworks-card text-center p-6 rounded-2xl bg-off-white hover:shadow-lg transition-shadow duration-300">
+          <div class="w-14 h-14 rounded-full bg-blush flex items-center justify-center mx-auto mb-5">
+            <svg class="w-7 h-7 text-burgundy" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d={feature.icon}/>
+            </svg>
+          </div>
+          <h4 class="text-brand-dark font-semibold text-base mb-1">{feature.title}</h4>
+          <p class="text-sage text-xs italic">{feature.subtitle}</p>
+        </div>
+      ))}
+    </div>
+    <p class="text-brand-body text-base md:text-lg text-center mt-8 max-w-2xl mx-auto leading-relaxed">
+      Κάθε box είναι μια δομημένη εμπειρία <span class="font-semibold">7 ή 10 ημερών</span>, ώστε η αλλαγή να γίνεται μέσα από μικρές, εφαρμόσιμες στιγμές μέσα στην ημέρα.
+    </p>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+  document.addEventListener('DOMContentLoaded', () => {
+    gsap.from('.howitworks-heading', { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: '.howitworks-section', start: 'top 75%' } });
+    gsap.from('.howitworks-card', { y: 40, opacity: 0, scale: 0.9, stagger: 0.12, duration: 0.6, ease: 'back.out(1.4)', scrollTrigger: { trigger: '.howitworks-grid', start: 'top 80%' } });
+  });
+</script>
