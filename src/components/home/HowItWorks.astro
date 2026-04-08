@@ -1,9 +1,9 @@
 ---
 const features = [
-  { title: 'Κάρτες αφύπνισης', subtitle: 'awareness triggers', icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' },
-  { title: 'Κάρτες άσκησης', subtitle: 'structured micro interventions', icon: 'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z' },
-  { title: 'Ritual Anchor (κερί)', subtitle: 'νευρολογικό σημείο έναρξης', icon: 'M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z' },
-  { title: 'Οδηγός & αυτοκόλλητα', subtitle: 'συμβολικά στοιχεία πρόθεσης', icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z' },
+  { title: 'Κάρτες επίγνωσης', subtitle: '', icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' },
+  { title: 'Δομημένες μικρές ασκήσεις', subtitle: '', icon: 'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z' },
+  { title: 'Τελετουργικό σημείο έναρξης', subtitle: '', icon: 'M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z' },
+  { title: 'Συμβολικά στοιχεία πρόθεσης', subtitle: '', icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z' },
 ];
 ---
 
@@ -20,12 +20,12 @@ const features = [
             </svg>
           </div>
           <h4 class="text-brand-dark font-semibold text-base mb-1">{feature.title}</h4>
-          <p class="text-sage text-xs italic">{feature.subtitle}</p>
+          {feature.subtitle && <p class="text-sage text-xs italic">{feature.subtitle}</p>}
         </div>
       ))}
     </div>
     <p class="text-brand-body text-base md:text-lg text-center mt-8 max-w-2xl mx-auto leading-relaxed">
-      Κάθε box είναι μια δομημένη εμπειρία <span class="font-semibold">7 ή 10 ημερών</span>, ώστε η αλλαγή να γίνεται μέσα από μικρές, εφαρμόσιμες στιγμές μέσα στην ημέρα.
+      ώστε η αλλαγή να γίνεται μέσα από μικρές, εφαρμόσιμες στιγμές μέσα στην ημέρα.
     </p>
   </div>
 </section>

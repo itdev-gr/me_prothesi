@@ -6,11 +6,6 @@ const traits = [
   'φροντίζουν πολλούς ρόλους ταυτόχρονα',
   'θέλουν χώρο για προσωπική επανασύνδεση',
 ];
-const psychographics = [
-  'Αναζητούν εσωτερική καθαρότητα',
-  'Έχουν επίγνωση αλλά δυσκολεύονται στη δράση',
-  'Θέλουν μικρές, ρεαλιστικές παρεμβάσεις',
-];
 ---
 
 <section id="audience" class="audience-section bg-off-white py-12 md:py-16">
@@ -27,20 +22,6 @@ const psychographics = [
         </li>
       ))}
     </ul>
-    <div class="audience-psycho bg-blush rounded-2xl p-6 md:p-8 max-w-2xl mx-auto">
-      <p class="text-burgundy font-semibold text-sm uppercase tracking-wide mb-4">Γυναίκες & άνδρες 28–45, σε φάση μετάβασης</p>
-      <ul class="space-y-2 mb-4">
-        {psychographics.map((item) => (
-          <li class="flex items-start gap-3">
-            <span class="w-1.5 h-1.5 rounded-full bg-sage flex-shrink-0 mt-2"></span>
-            <span class="text-brand-body text-sm md:text-base">{item}</span>
-          </li>
-        ))}
-      </ul>
-      <p class="text-sage text-sm italic">
-        Με κόπωση από το "θετικό thinking" — θέλουν δομή, όχι απλά έμπνευση.
-      </p>
-    </div>
   </div>
 </section>
 
@@ -51,6 +32,5 @@ const psychographics = [
   document.addEventListener('DOMContentLoaded', () => {
     gsap.from('.audience-heading', { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: '.audience-section', start: 'top 75%' } });
     gsap.from('.audience-item', { x: -20, opacity: 0, stagger: 0.1, duration: 0.5, ease: 'power2.out', scrollTrigger: { trigger: '.audience-list', start: 'top 80%' } });
-    gsap.from('.audience-psycho', { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: '.audience-psycho', start: 'top 85%' } });
   });
 </script>
