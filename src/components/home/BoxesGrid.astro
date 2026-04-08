@@ -49,6 +49,8 @@ const boxes = [
   gsap.registerPlugin(ScrollTrigger);
   document.addEventListener('DOMContentLoaded', () => {
     gsap.from('.boxes-heading', { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: '.boxes-section', start: 'top 75%' } });
-    gsap.from('.box-card', { y: 50, opacity: 0, scale: 0.95, stagger: 0.15, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: '.boxes-grid', start: 'top 80%' } });
+    document.querySelectorAll('.box-card').forEach((card, i) => {
+      gsap.from(card, { y: 50, opacity: 0, scale: 0.95, delay: i * 0.15, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: card, start: 'top 90%' } });
+    });
   });
 </script>
